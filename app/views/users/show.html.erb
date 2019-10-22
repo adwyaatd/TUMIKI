@@ -1,0 +1,54 @@
+<div class="main user-show">
+  <div  class="menu">
+    <ul class="menu-bar user">
+      <li>
+      <img src="<%="/user_images/#{@current_user.image_name}"%>">
+      <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧","/users/index") %>
+      </li>
+      <li>
+        <%= link_to("投稿一覧","/posts/index")%>
+      </li>
+      <li>
+        <%= link_to("新規投稿","/posts/new")%>
+      </li>
+      <li>
+        <%= link_to("ログアウト","/logout",{method:"post"})%>
+      </li>
+  　</ul>
+  </div>
+  <div class="user-container">
+   <!-- <div class="user-container"> -->
+    <!-- <div class="user"> -->
+     <!--  <img src="<%="/user_images/#{@user.image_name}"%>">
+      <h2><%= @user.name %></h2>
+      <p><%= @user.email %></p>
+      <% if @current_user.id == @user.id %>
+      <%= link_to("編集","") %>
+      <% end %> -->
+    <!-- </div> -->
+    <div class="">
+     
+    </div>
+    <ul class="user-tabs">
+      <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
+      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+    </ul>
+    <% @user.posts.each do |post|%>
+    <div class="posts-index-item">
+      <div class="post-left">
+        <img src="<%= "/user_images/#{post.user.image_name}" %>">
+      </div>
+      <div class="post-right">
+        <div class="post-user-name">
+           <%= link_to(post.user.name,"/users/#{post.user.id}")%>
+        </div>
+        <%= link_to(post.content,"/posts/#{post.id}") %>
+      </div>
+     </div>
+     <% end %>
+   </div>  
+  <!-- </div> -->
+</div>
