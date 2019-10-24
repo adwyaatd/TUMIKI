@@ -4,12 +4,13 @@ class User < ApplicationRecord
   validates :name,{presence:true,uniqueness:true}
   validates :email,{presence:true, uniqueness:true}
 
+# 　scope :descend -> { order("posts.created_at DESC")}
 
   def posts
-    return Post.where(user_id:self.id)
+    return Post.where(user_id:self.id).order(created_at: :desc)
   end
 
-  def goals
-    return Goal.where(id:self.id)
+  def likes_count
+  	return Like.where(post_id:self.id).count
   end
 end

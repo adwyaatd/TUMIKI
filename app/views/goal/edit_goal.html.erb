@@ -1,0 +1,48 @@
+<div class="main user-show">
+
+  <div  class="menu">
+    <ul class="user">
+      <li>
+      <img src="<%="/user_images/#{@current_user.image_name}"%>">
+      <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
+      </li>
+      <li>
+      　<p>振り返り</p>
+      </li>
+      <li>
+        <%= link_to("目標設定","/goal/#{@current_user.id}/edit") %>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧","/users/index") %>
+      </li>
+      <li>
+        <%= link_to("投稿一覧","/posts/index")%>
+      </li>
+      <li>
+        <%= link_to("新規投稿","/posts/new")%>
+      </li>
+      <li>
+        <%= link_to("ログアウト","/logout",{method:"post"})%>
+      </li>
+  　</ul>
+  </div>
+
+  <div class="user-container">
+    <div class="form-heading">目標再設定</div>
+   <div class="form">
+    <div class="form-body">
+      <% @goal.errors.full_messages.each do |message| %>
+       <div class="form-error">
+        <%= message %>
+       </div>
+      <% end %>
+      
+       <div class="">
+       </div>
+       <div class="">
+       </div>
+    </div>
+   </div>
+  </div>
+
+</div>

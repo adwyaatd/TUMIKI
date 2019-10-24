@@ -20,4 +20,8 @@ class GoalController < ApplicationController
       render("/goal/#{@current_user.id}/set_goal")
     end
   end
+
+  def edit
+    @goal = Goal.find_by(id: params[:id])
+  end
 end

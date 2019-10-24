@@ -47,10 +47,11 @@
 /* users/show ================================ */
 .menu{
   width: 20%;
-  margin: 40px 10px;
+  margin: 40px 0px 0px 10px;
   background-color: white;
-  overflow: hidden;
   box-shadow: 10px 2px 5px #C1CED8;
+  height: fit-content;
+  border-radius: 2px;
 }
 
 .menu a{
@@ -59,9 +60,70 @@
   line-height: 3em;
 }
 
+.goal-tab {
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 10px 2px 5px #C1CED8;
+  border-radius: 4px;
+}
+
+.goal-tab p{
+  font-size: 1em;
+  text-align: left;
+  padding: 3px 1px 1px 20px;;
+}
+
+.post-form {
+  max-width: 600px;
+  margin: 15px auto;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+  border-radius: 4px;
+}
+
+.post-form-body {
+  padding: 10px 20px;
+}
+
+.post-form textarea {
+  width: 100%;
+  min-height: 80px;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+  border: solid 1px #3ecdc6;
+}
+
+.post-form input {
+  width: 100%;
+  border: 1px solid #d8dadf;
+  color: #57575f;
+  font-size: 1em;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+}
+
+.post-form input[type="submit"] {
+  background-color: #3ecdc6;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 15%;
+  border-radius: 2px;
+  float: right;
+  border-radius: 2px;
+}
+
+.post-form-body:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 .user-container {
   width: 70%;
-  margin: 60px auto;
+  margin: 40px auto;
   padding-left: 15px;
   padding-right: 15px;
   clear: both;
@@ -110,7 +172,7 @@
 }
 
 .user-tabs {
-  margin-top: 40px;
+  margin-top: 20px;
   background-color: white;
   overflow: hidden;
   box-shadow: 0 2px 6px #c1ced7;
@@ -134,6 +196,34 @@
   color: #afb6bf;
 }
 
+.user-posts-box {
+  padding: 10px 30px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.post-content {
+  width: 100%;
+  text-align: left;
+}
+
+.foot-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.likes_count{
+  width: 30%;
+  text-align: left;
+  font-size: 0.5em;
+}
+
+.posting-time {
+  width: 100%;
+  text-align: right;
+  font-size: 0.5em;
+  color: gray;
+}
 /* users/new, users/edit ================================ */
 .users-form input {
   margin-bottom: 15px;
