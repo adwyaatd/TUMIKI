@@ -17,6 +17,21 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def show
     @user = User.find_by(id: params[:id])
+    @goal = Goal.find_by(users_id: @user.id)
+    @post = Post.new
+  end
+
+  def posts_create
+    @post = Post.new(
+      content: params[:content],
+      user_id: @current_user.id
+    )
+    if @post.save
+      flash[:notice] = "投稿しました"
+       redirect_to("/users/#{@current_user.id}")
+    else
+       render("users/#{@current_user.id}")
+     end
   end
 
   def new
@@ -70,7 +85,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     if @user && @user.authenticate(params[:password])
       session[:user_id]=@user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/posts/index")
+      redirect_to("/users/#{@user.id}")
     else
       @error_message = "メールアドレス又はパスワードが間違っています"
       @email = params[:email]

@@ -20,11 +20,13 @@ Rails.application.routes.draw do
  get "/users/signup" => "users#new"
  get "/users/:id" => "users#show"
  get "/login_form" => "users#login_form"
+ post "/users/posts_create" => "users#posts_create"
  post "/login" => "users#login"
  post "/logout" => "users#logout"
 
  get "/goals/:id/set_goal" => "goal#set_goal"
  post "/goals/:id/create_goal"=>"goal#create_goal"
+ get "/goals/:id/edit" => "goal#edit"
 
  post "/likes/:post_id/create" => "likes#create"
  post "/likes/:post_id/destroy" => "likes#destroy"

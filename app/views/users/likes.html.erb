@@ -1,21 +1,32 @@
 <div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <img src="<%= "/user_images/#{@user.image_name}" %>">
-      <h2><%= @user.name %></h2>
-      <p><%= @user.email %></p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% end %>
-    </div>
+  <div  class="menu">
+    <ul class="user">
+      <li>
+      <img src="<%="/user_images/#{@current_user.image_name}"%>">
+      <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
+      </li>
+      <li>
+        <%= link_to("ユーザー一覧","/users/index") %>
+      </li>
+      <li>
+        <%= link_to("投稿一覧","/posts/index")%>
+      </li>
+      <li>
+        <%= link_to("新規投稿","/posts/new")%>
+      </li>
+      <li>
+        <%= link_to("ログアウト","/logout",{method:"post"})%>
+      </li>
+  　</ul>
+  </div>
 
+  <div class="user-container">
     <ul class="user-tabs">
-      <li><%= link_to("目標", "/users/#{@user.id}/goals") %></li>
-      <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
-      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+     <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+     <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
     </ul>
     <% @like.each do |like|%>
-      <% post=Post.find_by(id:like.post_id)%>
+     <% post=Post.find_by(id:like.post_id)%>
       <div class="posts-index-item">
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
@@ -25,8 +36,18 @@
             <%= link_to(post.user.name, "/users/#{post.user.id}") %>
           </div>
           <%= link_to(post.content, "/posts/#{post.id}") %>
+          <div class="foot-wrapper">
+            <div class="likes_count">
+             <span class= "fa fa-heart btn-to-unlike"></span>
+             <%= Like.where(post_id: post.id).count %>
+            </div>
+            <div class="posting-time">
+              <%= post.created_at %>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
+
 </div>
