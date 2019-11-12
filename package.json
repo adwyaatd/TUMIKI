@@ -1,0 +1,29 @@
+{
+  "name": "TUMIKI_app",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --out-dir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adwyaatd/TUMIKI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adwyaatd/TUMIKI/issues"
+  },
+  "homepage": "https://github.com/adwyaatd/TUMIKI#readme",
+  "dependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3"
+  }
+}

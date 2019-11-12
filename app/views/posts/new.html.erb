@@ -1,4 +1,5 @@
 <div class="main posts-new">
+  <%= render 'layouts/menu' %>
   <div class="container">
     <h1 class="form-heading">投稿する</h1>
     <%= form_tag("/posts/create")do %>
@@ -6,7 +7,7 @@
         <div class="form-body">
           <% @post.errors.full_messages.each do |message| %>
             <div class="form-error">
-              <%= message %>
+             <%= message %>
             </div>
           <% end %>
           <textarea name="content"><%= @post.content %></textarea>

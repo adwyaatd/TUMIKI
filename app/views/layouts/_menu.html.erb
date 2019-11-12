@@ -1,0 +1,28 @@
+<div  class="menu">
+      <ul class="user">
+        <% if @current_user %>
+        <li>
+        <img src="<%="/user_images/#{@current_user.image_name}"%>">
+        <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
+        </li>
+        <li>
+          <%= link_to("ホームへ戻る","/users/#{@current_user.id}") %>
+        </li>
+        <li>
+        　<%= link_to("新規投稿","/posts/new")%>
+        </li>
+        <li>
+          <%= link_to("タスク管理","/tasks/#{@current_user.id}/new") %>
+        </li>
+        <li>
+          <%= link_to("達成済み目標","/goals/#{@current_user.id}/record") %>
+        </li>
+        <li>
+          <%= link_to("目標再設定","/goals/#{@current_user.id}/edit_goal") %>
+        </li>
+        <li>
+          <%= link_to("マイルール設定","/rules/#{@current_user.id}/new") %>
+        </li> 
+    　</ul>
+    </div>
+   <% end %>

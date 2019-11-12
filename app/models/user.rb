@@ -10,6 +10,10 @@ class User < ApplicationRecord
     return Post.where(user_id:self.id).order(created_at: :desc)
   end
 
+  def tasks
+    return Task.where(user_id:self.id).order(created_at: :desc)
+ end 
+
   def likes_count
   	return Like.where(post_id:self.id).count
   end

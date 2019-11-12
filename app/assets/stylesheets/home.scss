@@ -10,6 +10,7 @@ html {
   font: 100%/1.5 'Avenir Next', 'Hiragino Sans', sans-serif;
   line-height: 1.7;
   letter-spacing: 1px;
+  height: 100%;
 }
 
 ul, li {
@@ -22,6 +23,7 @@ a {
   text-decoration: none;
   color: #2d3133;
   font-size: 14px;
+  cursor: pointer;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -41,34 +43,37 @@ form input[type="submit"] {
 /* 共通レイアウト ================================ */
 body {
   color: #2d3133;
-  background-color: #00a20cd4;
+  background-color: #f5f8fa;
   margin: 0;
   min-height: 1vh;
+  height: 100%;
 }
 
 .main {
   position: absolute;
+  display: flex;
   top: 64px;
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 100%;
-  background-color: #f5f8fa;
 }
 
 .container {
-  max-width: 600px;
+  position: absolute;
+  left: 25%;
+  width: 70%;
   margin: 60px auto;
   padding-left: 15px;
   padding-right: 15px;
-  clear: both;
 }
 
 /* ヘッダー ================================ */
 header {
   height: 64px;
-  position: absolute;
+  position: fixed;
   z-index: 1;
   width: 100%;
+  background-color:green;
 }
 
 .header-logo {
@@ -116,6 +121,25 @@ header {
   font-size: 13px;
 }
 
+/*メニューバー　==========================*/
+.menu{
+  width: 20%;
+  margin: 40px 0px 0px 10px;
+  background-color: white;
+  box-shadow: 10px 2px 5px #C1CED8;
+  height: fit-content;
+  border-radius: 2px;
+  text-align: center;
+  position: fixed;
+  border: solid 1px #e4e4e4;
+}
+
+.menu a{
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  line-height: 3em;
+}
+
 /* top ================================ */
 .top-main {
   padding: 200px 0 100px;
@@ -135,6 +159,7 @@ header {
 
 .top-message {
   position: relative;
+  margin: auto;
 }
 
 .top-main h2 {
@@ -152,7 +177,7 @@ header {
 /* about ================================ */
 .about-main {
   padding: 180px 8% 0;
-  color: white;
+  background-color: ivory;
 }
 
 .about-main h2 {
@@ -182,7 +207,7 @@ header {
   font-weight: 300;
   margin: 60px 0 20px;
   font-size: 48px;
-  color: #bcc8d4;
+  color: #636465;
 }
 
 .form-body {
@@ -230,7 +255,7 @@ header {
 
 /* フラッシュ ================================ */
 .flash {
-  padding: 10px 0;
+  padding: 5px 0;
   color: white;
   background: rgb(251, 170, 88);
   text-align: center;
@@ -240,4 +265,66 @@ header {
   width: 100%;
   border-radius: 0 0 2px 2px;
   font-size: 14px;
+}
+
+/*モーダル*/
+.login-modal-wrapper,.signup-modal-wrapper,.logout-modal-wrapper{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  display: none;
+}
+
+.modal {
+  position: absolute;
+  top: 20%;
+  left: 34%;
+  background-color: #e6ecf0;
+  padding: 20px 0 40px;
+  border-radius: 10px;
+  width: 450px;
+  height: auto;
+  text-align: center;
+}
+
+.fa-times {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: rgba(128, 128, 128, 0.46);
+  cursor: pointer;
+}
+
+#signup-form, #login-form {
+  width: 100%;
+}
+
+#signup-form h2, #login-form h2 {
+  color: #5f5d60;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+#signup-form input, #login-form input {
+  width: 320px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 12px 12px;
+  border: 1px solid #d0d5d8;
+  border-radius: 5px;
+}
+
+#submit-btn {
+  display: inline-block;
+  padding: 14px 140px;
+  background-color: #5dca88;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  margin: 10px auto;
+  cursor: pointer;
 }
