@@ -1,0 +1,51 @@
+<div class = "main">
+ <%= render 'layouts/menu' %>
+
+ <div class = "container">
+ 	 <div class="goal-tab ">
+      <p>【目標】<%= @goal.goal %></p>
+      <p>【目的】<%= @goal.purpose %></p>
+      <p>【達成期日】<%= @goal.date %></p>
+    </div>
+
+   <!--  <%= form_tag("/users/posts_create")do %>
+      <div class="post-form">
+       <div class="post-form-body">
+        <% @post.errors.full_messages.each do |message| %>
+         <div class="form-error">
+          <%= message %>
+         </div>
+        <% end %>
+         <p>今日の積み上げ</p>   
+         <textarea name="content"><%= @post.content %></textarea>
+         <input type="submit" value="投稿">
+       </div>
+      </div>
+    <% end %> -->
+
+    <ul class="user-tabs">
+     <li><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
+     <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+     <li class="active"><%= link_to("タスク","/tasks/#{@current_user.id}") %></li>
+    </ul>
+    <% @user.tasks.each do |task|%>
+    <div class="user-posts-box">
+     <div class="post-content">
+      <%= link_to(task.content,"/tasks/#{@user.id}/edit") %> 
+     </div>
+     <div class="foot-wrapper">
+      <div class="likes_count">
+      <%= link_to("完了","/") %>
+      </div>
+      <div class="likes_count">
+      <%= link_to("削除","/tasks/#{task.id}/destroy",{method: "tasks"}) %>
+      </div>
+      <div class="posting-time">
+       <%= task.created_at %>
+      </div>
+     </div>
+    </div>
+    <% end %>
+  </div>  
+ 
+</div>

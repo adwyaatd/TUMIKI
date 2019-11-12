@@ -1,0 +1,29 @@
+<div class = "main">
+ <%= render 'layouts/menu' %>
+
+ <div class = "container">
+  <h1 class = "form-heading">タスク管理</h1>
+  <%= form_tag("/tasks/create") do %>
+   <div class ="form">
+	<div class ="form-body">
+	 <p>タスクを追加</p>
+	 <input name="content" value="<%= @task.content %>">
+	 <input type="submit" value="追加">
+	</div>
+   </div>
+  <% end %>
+
+    <% @user.tasks.each do |task|%>
+    <div class="user-posts-box">
+     <div class="post-content">
+      <%= link_to(task.content,"/tasks/#{@user.id}/edit") %> 
+     </div>
+     <div class="foot-wrapper">
+      <div class="posting-time">
+       <%= task.created_at %>
+      </div>
+     </div>
+    </div>
+    <% end %>
+ </div>
+</div>

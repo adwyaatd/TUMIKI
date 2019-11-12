@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'goal/set_goal'
 
   get "/" => "home#top"
   get "/about" => "home#about"
@@ -20,15 +19,28 @@ Rails.application.routes.draw do
  get "/users/signup" => "users#new"
  get "/users/:id" => "users#show"
  get "/login_form" => "users#login_form"
- post "/users/posts_create" => "users#posts_create"
+ post "/users/:id/posts_create" => "users#posts_create"
  post "/login" => "users#login"
  post "/logout" => "users#logout"
 
  get "/goals/:id/set_goal" => "goal#set_goal"
  post "/goals/:id/create_goal"=>"goal#create_goal"
- get "/goals/:id/edit" => "goal#edit"
+ get "/goals/:id/edit_goal" => "goal#edit_goal"
+ post "/goals/:id/update" => "goal#update"
+ get"/goals/:id/record" => "goal#record"
 
  post "/likes/:post_id/create" => "likes#create"
  post "/likes/:post_id/destroy" => "likes#destroy"
+
+ get "/tasks/:id/new" => "tasks#new"
+ get "/tasks/:id/edit" => "tasks#edit"
+ post "/tasks/create" => "tasks#create"
+ post"/tasks/:id/destroy" => "tasks#destroy"
+ get "/tasks/:id" => "tasks#index"
+
+ get "/rules/:id/new" => "rules#new"
+ post "/rules/:id/create" =>"rules#create"
+ post "rules/:id/update" => "rules#update"
+ get "/rules/:id/edit" => "rules#edit"
 
 end

@@ -1,0 +1,18 @@
+<div class="main">
+
+  <%= render 'layouts/menu' %>
+
+  <div class="container">
+    <div class="form-heading">マイルールの編集</div>
+
+   <div class="form">
+    <div class="form-body">
+       <%= form_tag("/rules/#{@rule.id}/update") do %>
+         <input name="content" value="<%= @rule.content %>">
+         <input type="submit" value="更新">
+       <% end %>
+    </div>
+   </div>
+
+  </div>
+ </div>

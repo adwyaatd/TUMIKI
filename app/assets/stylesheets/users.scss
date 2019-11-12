@@ -45,22 +45,7 @@
 }
 
 /* users/show ================================ */
-.menu{
-  width: 20%;
-  margin: 40px 0px 0px 10px;
-  background-color: white;
-  box-shadow: 10px 2px 5px #C1CED8;
-  height: fit-content;
-  border-radius: 2px;
-}
-
-.menu a{
-  font-size: 18px;
-  letter-spacing: 0.1em;
-  line-height: 3em;
-}
-
-.goal-tab {
+@mixin wrapper{
   width: 100%;
   background-color: white;
   overflow: hidden;
@@ -68,10 +53,25 @@
   border-radius: 4px;
 }
 
-.goal-tab p{
+.goal-wrapper{
+  @include wrapper;
+ 
+  p{
   font-size: 1em;
   text-align: left;
   padding: 3px 1px 1px 20px;;
+  }
+}
+
+.rule-wrapper{
+ @include wrapper;
+ margin-top: 8px;
+ 
+  p{
+  font-size: 1em;
+  text-align: left;
+  padding: 3px 1px 1px 20px;;
+  }
 }
 
 .post-form {
@@ -80,6 +80,7 @@
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   border-radius: 4px;
+  text-align: center;
 }
 
 .post-form-body {
@@ -121,23 +122,14 @@
   clear: both;
 }
 
-.user-container {
-  width: 70%;
-  margin: 40px auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  clear: both;
-}
-
-.user-show {
+/*.user-show {
   text-align: center;
-  display: flex;
-}
+}*/
 
-.user {
+/*.user {
   margin-bottom: 20px;
   display: auto;
-}
+}*/
 
 .user img {
   width: 80px;

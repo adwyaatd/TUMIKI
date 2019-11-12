@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-before_action:autenticate_user,{only:[:index,:edit,:show,:update]}
-before_action:forbid_login_user,{only:[:new,:create,:login,:login_form]}
+before_action:autenticate_user,{only:[:index,:show,:update,:likes,:posts_create]}
+before_action:forbid_login_user,{only:[:new,:create,:login,:login_form,:goals]}
 before_action:ensure_current_user,{only:[:edit,:update]}
 
   def ensure_current_user
@@ -17,7 +17,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def show
     @user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(users_id: @user.id)
+    @goal = Goal.find_by(users_id: @current_user.id)
     @post = Post.new
   end
 
@@ -26,12 +26,14 @@ before_action:ensure_current_user,{only:[:edit,:update]}
       content: params[:content],
       user_id: @current_user.id
     )
+
     if @post.save
       flash[:notice] = "投稿しました"
-       redirect_to("/users/#{@current_user.id}")
+      redirect_to("/users/#{@current_user.id}")
     else
-       render("users/#{@current_user.id}")
-     end
+      @user = User.find_by(id: @current_user.id)
+      render("/users/show")
+    end
   end
 
   def new
@@ -50,6 +52,9 @@ before_action:ensure_current_user,{only:[:edit,:update]}
      flash[:notice] = "ユーザー登録完了です"
      redirect_to("/goals/#{@user.id}/set_goal")
    else
+     @name = params[:name]
+     @email = params[:email]
+     @password = params[:password]
      render("users/new")
    end
   end
@@ -63,7 +68,6 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    @user.password = params[:password]
     @user.image_name= "#{@user.id}.JPG"
     image = params[:image]
     if params[:image]
@@ -97,12 +101,14 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   def logout
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
-    redirect_to("/login_form")
+    redirect_to("/")
   end
 
   def likes
+    @post = Post.find_by(id:params[:id])
     @user=User.find_by(id:params[:id])
     @like=Like.where(user_id:@user.id)
+    @goal = Goal.find_by(users_id: @user.id)
   end
 
   def goals

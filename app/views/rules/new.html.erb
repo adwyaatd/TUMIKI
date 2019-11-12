@@ -1,0 +1,35 @@
+<div class="main">
+
+  <%= render 'layouts/menu' %>
+
+  <div class="container">
+    <div class="form-heading">マイルールの設定・更新</div>
+
+   <div class="form">
+    <div class="form-body">
+      <% rule = Rule.new %>
+        <% rule.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+      <% end %>
+      <%= form_tag("/rules/#{@current_user.id}/create") do %>
+        <p>【ルール内容】</p>
+          <input name="content">
+          <input type="submit" value="設定">
+      <% end %>        
+    </div>
+   </div>
+
+   <div class="form">
+    <div class="form-body">
+      <p>【マイルール一覧】</p>    
+      <% @rule.each do |rule| %>
+      <div class="rule-index">
+      <%= link_to(rule.content,"/rules/#{rule.id}/edit") %>
+      </div>
+      <% end %>
+   </div>
+  </div>
+
+</div>

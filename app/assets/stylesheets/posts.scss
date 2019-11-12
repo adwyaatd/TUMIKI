@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* posts/index ================================ */
+.posts-index{
+  text-align: center;
+  display: flex;
+}
+
 .btn-to-unlike{
   color: #ff2581;
 }

@@ -1,29 +1,32 @@
-<div class="main user-show">
-  <div  class="menu">
-    <ul class="user">
-      <li>
-      <img src="<%="/user_images/#{@current_user.image_name}"%>">
-      <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
-      </li>
-      <li>
-        <%= link_to("ユーザー一覧","/users/index") %>
-      </li>
-      <li>
-        <%= link_to("投稿一覧","/posts/index")%>
-      </li>
-      <li>
-        <%= link_to("新規投稿","/posts/new")%>
-      </li>
-      <li>
-        <%= link_to("ログアウト","/logout",{method:"post"})%>
-      </li>
-  　</ul>
-  </div>
+<div class="main">
+ <%= render 'layouts/menu' %>
 
-  <div class="user-container">
+  <div class="container">
+     <div class="goal-tab ">
+      <p>【目標】<%= @goal.goal %></p>
+      <p>【目的】<%= @goal.purpose %></p>
+      <p>【達成期日】<%= @goal.date %></p>
+    </div>
+
+    <%= form_tag("/users/posts_create")do %>
+      <div class="post-form">
+       <div class="post-form-body">
+        <% @post.errors.full_messages.each do |message| %>
+         <div class="form-error">
+          <%= message %>
+         </div>
+        <% end %>
+         <p>今日の積み上げ</p>   
+         <textarea name="content"></textarea>
+         <input type="submit" value="投稿">
+       </div>
+      </div>
+    <% end %>
+
     <ul class="user-tabs">
-     <li><%= link_to("投稿", "/users/#{@user.id}") %></li>
+     <li><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+     <li><%= link_to("タスク","/tasks/#{@current_user.id}") %></li>
     </ul>
     <% @like.each do |like|%>
      <% post=Post.find_by(id:like.post_id)%>

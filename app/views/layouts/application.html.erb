@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>TUMIKI</title>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= favicon_link_tag('favicon.ico') %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<!--     <script type="text/javascript" src="パス"></script>  -->
   </head>
 
   <body>
@@ -24,20 +29,20 @@
             <%= link_to("ユーザー一覧","/users/index") %>
           </li>
           <li>
-            <%= link_to("投稿一覧","/posts/index")%>
+            <%= link_to("ユーザー投稿一覧","/posts/index")%>
           </li>
           <li>
-            <%= link_to("ログアウト","/logout",{method:"post"})%>
+            <a id="logout">ログアウト</a>
           </li>
         <% else %>
           <li>
             <%= link_to("TUMIKIとは","/about")%>
           </li>
           <li>
-            <%= link_to("新規登録","/users/signup") %>
+            <a id="signup-show">新規登録</a> 
           </li>
           <li>
-            <%= link_to("ログイン","/login_form")%>
+           <a id="login">ログイン</a>
           </li>
         <% end %>
       </ul>
@@ -48,5 +53,72 @@
       </div>
     <% end %>
     <%= yield %>
+
+<div class="login-modal-wrapper" id="login-modal">
+  <div class="modal">
+    <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+    </div>
+  <div id="login-form">
+  <h2>ユーザーログイン</h2>
+  <%= form_tag("/login") do%>
+          <p>メールアドレス</p>
+          <input class="form-control" name="email" value="<%=@email%>">
+          <p>パスワード</p>
+          <input class="form-control"　name="password" type="password" value="<%=@password%>">
+          <input id="submit-btn" type="submit" value="ログイン">
+        <% end %>
+
+   <!-- <form action="#">
+    <input class="form-control" type="text" placeholder="メールアドレス">
+    <input class="form-control" type="password" placeholder="パスワード">
+    <div id="submit-btn">ログイン</div>
+   </form> -->
+  </div>
+</div>
+</div>
+
+<div class="signup-modal-wrapper" id="signup-modal">
+  <div class="modal">
+    <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+      </div>
+
+    <div id="signup-form">
+      <h2>新規ユーザー登録</h2>
+       <%= form_tag("/users/create") do %>
+          <p>ユーザー名</p>
+          <input name="name" value="<%= @name %>">
+          <p>メールアドレス</p>
+          <input name="email" value="<%= @email %>">
+          <p>パスワード</p>
+          <input name="password" type="password" value="<%= @password %>">
+          <input type="submit" value="新規登録">
+          <% end %>
+  <!--     <form action="#">
+        <input class="form-control" type="text" placeholder="メールアドレス">
+        <input class="form-control" type="password" placeholder="パスワード">
+        <div id="submit-btn">新規登録</div>
+      </form> -->
+    </div>
+  </div>
+</div>
+
+  <div class="logout-modal-wrapper" id="logout-modal">
+   <div class="modal">
+     <div class="close-modal">
+      <i class="fa fa-2x fa-times"></i>
+     </div>
+     <div id="logout-form">
+      <h2>ログアウトしますか</h2>
+       <div>
+        <%= link_to("はい","/logout",{method:"post"})%>        
+       </div>
+       <div id=logout-no>
+        <a>いいえ</a>
+       </div>
+    </div>
+   </div>
+  </div>
   </body>
 </html>
