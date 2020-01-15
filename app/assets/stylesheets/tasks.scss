@@ -1,3 +1,35 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.task-wrapper{
+	display: flex;
+}
+
+.tasks-index,.done-tasks-index{
+  width: 100%;
+}
+
+.tasks-title{
+  background-color: #e2ffe1;
+  text-align: center;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.done-tasks-title{
+  background-color: #e2ffe1;
+  text-align: center;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.task-box ,.done-task-box{
+  padding: 10px 30px;
+  background-color: white;
+  box-shadow: 0 2px 6px #c1ced7;
+}
+
+.task-content {
+  width: 100%;
+  text-align: left;
+}
+
+.foot-wrapper{
+  display: flex;
+  justify-content: space-between;
+}

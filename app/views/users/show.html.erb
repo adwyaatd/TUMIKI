@@ -5,7 +5,7 @@
    <div class="goal-wrapper">
       <p>【目標】<%= @goal.goal %></p>
       <p>【目的】<%= @goal.purpose %></p>
-      <p>【達成期日】<%= @goal.date %></p>
+      <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
   </div>
 
     <% if rule = Rule.where(user_id:@current_user.id) %>
