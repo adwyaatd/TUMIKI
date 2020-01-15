@@ -27,6 +27,28 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def done
+    @task = Task.find_by(id: params[:id])
+    @task.status = "done"
+
+    if @task.save
+      redirect_to("/tasks/#{@current_user.id}")
+    else
+      render("tasks#index")
+    end
+  end
+
+  def unfinish
+    @task = Task.find_by(id: params[:id])
+    @task.status = nil
+
+    if @task.save
+     redirect_to("/tasks/#{@current_user.id}")
+    else
+      render("tasks#index")
+    end 
+  end
+
   def destroy
     @task = Task.find_by(id: params[:id])
     @task.destroy

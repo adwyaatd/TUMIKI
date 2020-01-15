@@ -1,10 +1,10 @@
 <div class="main">
   <div class="container">
     <div class="form-heading">目標を設定しましょう</div>
-    <div class="form users-form">
+    <div class="">
 
         <%= form_tag("/goals/#{@current_user.id}/create_goal") do %>
-        <p>あなたの今の目標は何ですか？</p>
+        <p>なたの今の目標は何ですか？</p>
           <input name="goal" value="<%= @user.goal %>">
         <p>目的は？</p>
           <input name="purpose" value="<%= @user.purpose %>">

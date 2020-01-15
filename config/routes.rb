@@ -37,7 +37,9 @@ Rails.application.routes.draw do
  get "/tasks/:id/new" => "tasks#new"
  get "/tasks/:id/edit" => "tasks#edit"
  post "/tasks/create" => "tasks#create"
- post"/tasks/:id/destroy" => "tasks#destroy"
+ post "/tasks/:id/destroy" => "tasks#destroy"
+ post "/tasks/:id/done" => "tasks#done"
+ post "/tasks/:id/unfinish" => "tasks#unfinish"
  get "/tasks/:id" => "tasks#index"
 
  get "/rules/:id/new" => "rules#new"
