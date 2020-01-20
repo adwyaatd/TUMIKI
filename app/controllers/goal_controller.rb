@@ -20,7 +20,7 @@ before_action:ensure_current_user,{only:[:edit_goal,:update]}
      purpose:params[:purpose],
      date:params[:date],
      users_id:@current_user.id,
-     user_name:@user_name
+     users_name:@user_name
    )
     if @goal.save
       flash[:notice] = "大目標設定完了です"
