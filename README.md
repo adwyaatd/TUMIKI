@@ -1,25 +1,13 @@
-# README
-test
+＃ アプリ名：TUMIKI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+＃ アプリ概要
 
-Things you may want to cover:
+＃ URL
 
-* Ruby version
+＃ 使用技術
 
-* System dependencies
+＃ 機能一覧
 
-* Configuration
+＃ AWSアーキテクチャ図
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+＃ 使用画面サンプル
