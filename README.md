@@ -17,11 +17,11 @@ http://raimuhosoda02.work/
 * Ruby：2.6.2
 * Rails：5.2.3
 * AWS
- * Route53
- * VPC
- * EC2
- * RDS for MySQL
- * S3
+　* Route53
+　* VPC
+　* EC2
+　* RDS for MySQL
+　* S3
 * Unicorn
 * nginx
 *　SASS
