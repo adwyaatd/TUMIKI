@@ -1,0 +1,45 @@
+.task-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tasks-index, .done-tasks-index {
+  width: 100%;
+}
+
+.tasks-title {
+  background-color: #e2ffe1;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 6px #c1ced7;
+          box-shadow: 0 2px 6px #c1ced7;
+}
+
+.done-tasks-title {
+  background-color: #e2ffe1;
+  text-align: center;
+  -webkit-box-shadow: 0 2px 6px #c1ced7;
+          box-shadow: 0 2px 6px #c1ced7;
+}
+
+.task-box, .done-task-box {
+  padding: 10px 30px;
+  background-color: white;
+  -webkit-box-shadow: 0 2px 6px #c1ced7;
+          box-shadow: 0 2px 6px #c1ced7;
+}
+
+.task-content {
+  width: 100%;
+  text-align: left;
+}
+
+.foot-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=tasks.css.map */

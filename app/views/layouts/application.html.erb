@@ -39,6 +39,9 @@
             <%= link_to("TUMIKIとは","/about")%>
           </li>
           <li>
+            <a id="guest-login">ゲストログイン</a> 
+          </li>
+          <li>
             <a id="signup-show">新規登録</a> 
           </li>
           <li>
@@ -59,17 +62,33 @@
     <div class="close-modal">
         <i class="fa fa-2x fa-times"></i>
     </div>
-  <div id="login-form">
-   <h2>ユーザーログイン</h2>
-    <%= form_tag("/login") do%>
-      <p>メールアドレス</p>
-      <input class="form-control" name="email" value="<%=@email%>">
-      <p>パスワード</p>
-      <input class="form-control"　name="password" type="password" value="<%=@password%>">
-      <input class="submit-btn" type="submit" value="ログイン">
-    <% end %>
+    <div id="login-form">
+    <h2>ユーザーログイン</h2>
+      <%= form_tag("/login") do%>
+        <p>メールアドレス</p>
+        <input class="form-control" name="email" value="<%=@email%>">
+        <p>パスワード</p>
+        <input class="form-control" name="password" type="password" value="<%=@password%>">
+        <input class="submit-btn" type="submit" value="ログイン">
+      <% end %>
+    </div>
   </div>
 </div>
+
+<div class="login-modal-wrapper" id="guest-login-modal">
+  <div class="modal">
+    <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
+    </div>
+    <div id="login-form">
+    <h2>ゲストユーザーでログインしますか？</h2>
+      <%= form_tag("/login") do%>
+        <input class="form-control" name="email" value="guestuser@gmail.com">
+        <input class="form-control" name="password" type="password" value="guestuser">
+        <input class="submit-btn" type="submit" value="ログイン">
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class="signup-modal-wrapper" id="signup-modal">
@@ -98,12 +117,12 @@
      <div class="close-modal">
       <i class="fa fa-2x fa-times"></i>
      </div>
-     <div id="logout-form">
+     <div id="login-form">
       <h2>ログアウトしますか</h2>
-       <div>
+       <div class="yes-no">
         <%= link_to("はい","/logout",{method:"post"})%>        
        </div>
-       <div id=logout-no>
+       <div id=logout-no class="yes-no">
         <a>いいえ</a>
        </div>
     </div>
