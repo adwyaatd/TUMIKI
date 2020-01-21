@@ -1,9 +1,8 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
 /* reset ================================ */
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -51,6 +50,8 @@ body {
 
 .main {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   top: 50px;
   width: 100%;
@@ -73,7 +74,9 @@ header {
   position: fixed;
   z-index: 1;
   width: 100%;
-  background-color:#c3c3c3;
+  background-color: #c3c3c3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -84,7 +87,7 @@ header {
   line-height: 50px;
 }
 
-.header-logo a{
+.header-logo a {
   color: white;
   font-size: 22px;
 }
@@ -123,11 +126,14 @@ header {
 }
 
 /*メニューバー　==========================*/
-.menu{
+.menu {
   width: 20%;
   margin: 40px 0px 0px 10px;
   background-color: white;
-  box-shadow: 10px 2px 5px #C1CED8;
+  -webkit-box-shadow: 10px 2px 5px #C1CED8;
+          box-shadow: 10px 2px 5px #C1CED8;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   border-radius: 2px;
   text-align: center;
@@ -135,7 +141,7 @@ header {
   border: solid 1px #e4e4e4;
 }
 
-.menu a{
+.menu a {
   font-size: 18px;
   letter-spacing: 0.1em;
   line-height: 3em;
@@ -161,21 +167,23 @@ header {
 .top-message {
   position: relative;
   margin: auto;
- 
-h2 {
+}
+
+.top-message h2 {
   font-size: 30px;
   -webkit-font-smoothing: antialiased;
 }
 
-h3 {
+.top-message h3 {
   font-size: 28px;
   -webkit-font-smoothing: antialiased;
 }
- p {
+
+.top-message p {
   font-size: 33px;
   margin-top: 20px;
 }
-}
+
 /* about ================================ */
 .about-main {
   padding: 180px 8% 0;
@@ -202,7 +210,8 @@ h3 {
   max-width: 600px;
   margin: 0 auto;
   background-color: white;
-  box-shadow: 0 2px 6px #c1ced7;
+  -webkit-box-shadow: 0 2px 6px #c1ced7;
+          box-shadow: 0 2px 6px #c1ced7;
 }
 
 .form-heading {
@@ -271,7 +280,7 @@ h3 {
 }
 
 /*モーダル*/
-.login-modal-wrapper,.signup-modal-wrapper,.logout-modal-wrapper{
+.login-modal-wrapper, .signup-modal-wrapper, .logout-modal-wrapper {
   position: fixed;
   top: 0;
   right: 0;
@@ -321,7 +330,7 @@ h3 {
   border-radius: 5px;
 }
 
-.submit-btn{
+.submit-btn {
   display: inline-block;
   padding: 14px 140px;
   background-color: #417eef;
@@ -329,10 +338,10 @@ h3 {
   border-radius: 3px;
   margin: 10px auto;
   cursor: pointer;
-    color: white;
+  color: white;
 }
 
-.yes-no{
+.yes-no {
   width: 50%;
   display: inline-block;
   padding: 5px 3px;
@@ -341,7 +350,9 @@ h3 {
   border-radius: 3px;
   margin: 10px auto;
   cursor: pointer;
-  a{
-    color: white;
-  }
 }
+
+.yes-no a {
+  color: white;
+}
+/*# sourceMappingURL=home.css.map */
