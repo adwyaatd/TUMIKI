@@ -102,7 +102,7 @@
        <%= form_tag("/users/create") do %>
           <p>ユーザー名</p>
           <input name="name" value="<%= @name %>">
-          <p>メールアドレス</p>
+          <p>メールアドレス</p><p></p>
           <input name="email" value="<%= @email %>">
           <p>パスワード</p>
           <input name="password" type="password" value="<%= @password %>">
@@ -119,10 +119,10 @@
      </div>
      <div id="login-form">
       <h2>ログアウトしますか</h2>
-       <div class="yes-no">
-        <%= link_to("はい","/logout",{method:"post"})%>        
-       </div>
-       <div id=logout-no class="yes-no">
+        <div class="yes-no">
+          <%= link_to("はい","/logout",{method:"post"})%>
+        </div>
+       <div id="logout-no" class="yes-no">
         <a>いいえ</a>
        </div>
     </div>

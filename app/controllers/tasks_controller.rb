@@ -25,6 +25,18 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @task=Task.find_by(id: params[:id])
+  end
+
+  def update
+    @task=Task.find_by(id:params[:id])
+    @task.content= params[:content]
+    if @task.save
+      flash[:notice]="タスクを編集しました"
+      redirect_to("/tasks/#{@current_user.id}")
+    else
+      render("tasks/#{@current_user.id}/edit")
+    end
   end
 
   def done
