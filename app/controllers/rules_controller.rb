@@ -29,4 +29,11 @@ class RulesController < ApplicationController
   def edit
     @rule = Rule.find_by(id:params[:id])
   end
+  
+  def destroy
+    @rule = Rule.find_by(id: params[:id])
+    @rule.destroy
+    flash[:notice] = "マイルールを削除しました"
+    redirect_to("/rules/#{@current_user.id}/new")
+  end
 end

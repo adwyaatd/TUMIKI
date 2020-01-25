@@ -41,10 +41,12 @@ Rails.application.routes.draw do
  post "/tasks/:id/done" => "tasks#done"
  post "/tasks/:id/unfinish" => "tasks#unfinish"
  get "/tasks/:id" => "tasks#index"
+ post "/tasks/:id/update" => "tasks#update"
 
  get "/rules/:id/new" => "rules#new"
  post "/rules/:id/create" =>"rules#create"
  post "rules/:id/update" => "rules#update"
  get "/rules/:id/edit" => "rules#edit"
-
+ post "rules/:id/destroy" => "rules#destroy"
+ 
 end
