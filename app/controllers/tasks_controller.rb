@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
   	@user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(users_id: @current_user.id)
+    @goal = Goal.find_by(user_id: @current_user.id)
     @post = Post.new
   end
 

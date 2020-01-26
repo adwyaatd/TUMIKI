@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def likes_count
   	return Like.where(post_id:self.id).count
   end
+
+  def goals
+    return Goal.where(user_id:self.id).order(created_at: :desc)
+  end
 end

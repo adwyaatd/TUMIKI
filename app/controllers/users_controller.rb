@@ -17,7 +17,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def show
     @user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(users_id: @current_user.id)
+    @goal = Goal.find_by(user_id: @current_user.id)
     @post = Post.new
   end
 
@@ -108,7 +108,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     @post = Post.find_by(id:params[:id])
     @user=User.find_by(id:params[:id])
     @like=Like.where(user_id:@user.id)
-    @goal = Goal.find_by(users_id: @user.id)
+    @goal = Goal.find_by(user_id: @user.id)
   end
 
   def goals
