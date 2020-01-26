@@ -1,3 +1,3 @@
 class Goal < ApplicationRecord
-	validates :users_id,:date,:purpose,:date,{presence: true}
+	validates :user_id,:date,:purpose,:date,{presence: true}
 end

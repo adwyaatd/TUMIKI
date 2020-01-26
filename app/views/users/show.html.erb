@@ -3,9 +3,18 @@
 
 <div class="container">
    <div class="goal-wrapper">
+   <% if @goal.status == nil%>
       <p>【目標】<%= @goal.goal %></p>
       <p>【目的】<%= @goal.purpose %></p>
       <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
+      <div class="achieve-btn">
+        <%= link_to("目標達成","/goals/#{@goal.id}/done",{method: "post"})%>
+      </div>
+   <% else %>
+     <div class="">
+     <%= link_to("目標を再設定しましょう","/goals/reset")%>
+     </div>
+   <% end %>
   </div>
 
     <% if rule = Rule.where(user_id:@current_user.id) %>
