@@ -3,18 +3,18 @@
   <%= render 'layouts/menu' %>
 
   <div class="container">
-    <div class="form-heading">目標更新</div>
+    <div class="form-heading">目標再設定</div>
 
    <div class="form">
     <div class="form-body">
-        <%= form_tag("/goals/#{@current_user.id}/update") do %>
+        <%= form_tag("/goals/#{@current_user.id}/recreate") do %>
           <P>あなたの目標は何ですか？</P>
             <input name="goal" value="<%= @goal.goal %>">
           <p>その目的は何でしょう？</p>
             <input name="purpose" value="<%= @goal.purpose %>">
           <P>いつまでに達成しますか？</P>
             <input type="date" name="date" value="<%= @goal.date %>">
-          <input type="submit" value="更新">
+          <input type="submit" value="設定">
         <% end %>        
     </div>
    </div>
