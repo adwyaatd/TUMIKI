@@ -31,7 +31,7 @@
 }
 
 .user-name a:hover {
-  color: #3ecdc6;
+  color: #11a72a;
 }
 
 .user-left {
@@ -99,7 +99,7 @@
   font-size: 1em;
   letter-spacing: 0.1em;
   border-radius: 2px;
-  border: solid 1px #3ecdc6;
+  border: solid 1px #11a72a;
 }
 
 .post-form input {
@@ -112,7 +112,7 @@
 }
 
 .post-form input[type="submit"] {
-  background-color: #3ecdc6;
+  background-color: #11a72a;
   color: white;
   cursor: pointer;
   font-weight: 300;
@@ -182,7 +182,7 @@
 }
 
 .user-tabs li.active {
-  border-bottom: 2px solid #3ecdc6;
+  border-bottom: 2px solid #11a72a;
 }
 
 .user-tabs li.active a {

@@ -29,7 +29,11 @@ Rails.application.routes.draw do
  post "/goals/:id/create_goal"=>"goal#create_goal"
  get "/goals/:id/edit_goal" => "goal#edit_goal"
  post "/goals/:id/update" => "goal#update"
- get"/goals/:id/record" => "goal#record"
+ get "/goals/:id/record" => "goal#record"
+ post "/goals/:id/done" => "goal#done"
+ post "/goals/:id/unfinish" => "goal#unfinish"
+ get "/goals/reset" => "goal#reset"
+ post "/goals/:id/recreate" => "goal#recreate"
 
  post "/likes/:post_id/create" => "likes#create"
  post "/likes/:post_id/destroy" => "likes#destroy"
