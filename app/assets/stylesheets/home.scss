@@ -74,6 +74,8 @@ header {
   z-index: 1;
   width: 100%;
   background-color:#c3c3c3;
+  background-image: url(/grain8.jpg);
+  background-size: cover;
   display: flex;
 }
 
@@ -260,7 +262,7 @@ h3 {
   margin-left: 25%;
   padding: 5px 0;
   color: white;
-  background: #3e5bcd;
+  background: #228a22;
   text-align: center;
   position: absolute;
   position: fixed;
