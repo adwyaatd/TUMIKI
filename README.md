@@ -22,8 +22,6 @@ http://raimuhosoda02.work/
     * Route53
     * VPC
     * EC2
-    * RDS for MySQL
-    * S3
 * Unicorn
 * nginx
 * SASS
@@ -52,9 +50,7 @@ http://raimuhosoda02.work/
 * 目標設定機能
     * 新規作成（目標・目的・期限）
     * 再設定・編集機能
-    * 
-    * 
-    * 
+    * 目標達成機能
 
 * タスク管理機能
     * 新規タスク設定
@@ -68,4 +64,3 @@ http://raimuhosoda02.work/
     * マイルール一覧表示
     * 編集
     * 削除
-
