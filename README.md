@@ -27,7 +27,6 @@ http://raimuhosoda02.work/
 * Unicorn
 * nginx
 * SASS
-* Bootstrap
 * JQuery
 
 # 機能一覧
@@ -69,7 +68,4 @@ http://raimuhosoda02.work/
     * マイルール一覧表示
     * 編集
     * 削除
- 
-# AWSアーキテクチャ図
 
-# 使用画面サンプル
