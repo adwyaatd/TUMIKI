@@ -52,8 +52,8 @@ group :development, :test do
   gem 'hirb'
   gem 'hirb-unicode'
   gem "awesome_print"
-  #gem 'sqlite3'
-  #gem 'mysql2'
+  gem 'rspec-rails'
+  gem 'chromedriver-helper', '~> 1.1.0'
 end
 
 group :development do
