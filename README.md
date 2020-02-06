@@ -26,8 +26,9 @@ http://raimuhosoda02.work/
 * nginx
 * HTML
 * SASS
-* JQuery  
-追加予定
+* JQuery
+
+【追加予定】
 * RSpec
 * Docker
 * CircleCI
