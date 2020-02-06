@@ -24,8 +24,13 @@ http://raimuhosoda02.work/
     * EC2
 * Unicorn
 * nginx
+* HTML
 * SASS
-* JQuery
+* JQuery  
+追加予定
+* RSpec
+* Docker
+* CircleCI
 
 # 機能一覧
 * ユーザー機能
