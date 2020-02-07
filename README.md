@@ -27,9 +27,10 @@ http://raimuhosoda02.work/
 * HTML
 * SASS
 * JQuery
+* RSpec
 
 【追加予定】
-* RSpec
+
 * Docker
 * CircleCI
 
