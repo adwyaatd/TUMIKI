@@ -1,12 +1,6 @@
 class GoalController < ApplicationController
-before_action:ensure_current_user,{only:[:edit_goal,:update]}
-
- def ensure_current_user
-    if @current_user.id != params[:id].to_i
-      flash[:notice]="他のアカウントの編集はできません"
-      redirect_to("/users/#{@current_user.id}")
-    end
-  end
+before_action:autenticate_user,{only:[:record]}
+before_action:ensure_current_user,{only:[:edit_goal,:update,:set_goal,:create_goal,:reset,:recreate,:done,:unfinish,:destroy]}
 
   def set_goal
     @goal=Goal.new
@@ -24,7 +18,7 @@ before_action:ensure_current_user,{only:[:edit_goal,:update]}
    )
     if @goal.save
       flash[:notice] = "大目標設定完了です"
-      redirect_to("/posts/new")
+      redirect_to("/posts/#{@current_user.id}/new")
     else
       render("/goals/#{@current_user.id}/set_goal")
     end

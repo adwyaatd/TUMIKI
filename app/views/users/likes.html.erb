@@ -2,27 +2,28 @@
  <%= render 'layouts/menu' %>
 
   <div class="container">
-     <div class="goal-wrapper ">
-      <p>【目標】<%= @goal.goal %></p>
-      <p>【目的】<%= @goal.purpose %></p>
-      <p>【達成期日】<%= @goal.date %></p>
-    </div>
-
-    <%= form_tag("/users/posts_create")do %>
-      <div class="post-form">
-       <div class="post-form-body">
-        <% @post.errors.full_messages.each do |message| %>
-         <div class="form-error">
-          <%= message %>
-         </div>
-        <% end %>
-         <p>今日の積み上げ</p>   
-         <textarea name="content"></textarea>
-         <input type="submit" value="投稿">
-       </div>
+    <% if @current_user.id == params[:id].to_i %>
+      <div class="goal-wrapper ">
+        <p>【目標】<%= @goal.goal %></p>
+        <p>【目的】<%= @goal.purpose %></p>
+        <p>【達成期日】<%= @goal.date %></p>
       </div>
-    <% end %>
 
+      <%= form_tag("/users/posts_create")do %>
+        <div class="post-form">
+        <div class="post-form-body">
+          <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+          <% end %>
+          <p>今日の積み上げ</p>   
+          <textarea name="content"></textarea>
+          <input type="submit" value="投稿">
+        </div>
+        </div>
+      <% end %>
+    <% end %>
     <ul class="user-tabs">
      <li><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
      <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>

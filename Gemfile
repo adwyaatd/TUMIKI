@@ -54,6 +54,7 @@ group :development, :test do
   gem "awesome_print"
   gem 'rspec-rails'
   gem 'chromedriver-helper', '~> 1.1.0'
+  gem 'capybara'
 end
 
 group :development do
