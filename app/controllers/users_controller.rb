@@ -1,15 +1,8 @@
 class UsersController < ApplicationController
 
-before_action:autenticate_user,{only:[:index,:show,:update,:likes,:posts_create]}
-before_action:forbid_login_user,{only:[:new,:create,:login,:login_form,:goals]}
+before_action:autenticate_user,{only:[:index,:show,:likes,:posts_create,:goals]}
+before_action:forbid_login_user,{only:[:new,:create,:login,:login_form]}
 before_action:ensure_current_user,{only:[:edit,:update]}
-
-  def ensure_current_user
-    if @current_user.id != params[:id].to_i
-      flash[:notice]="他のアカウントの編集はできません"
-      redirect_to("/posts/index")
-    end
-  end
 
   def index
     @users = User.all
@@ -68,10 +61,10 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    @user.image_name= "#{@user.id}.JPG"
-    image = params[:image]
     if params[:image]
-      File.binwrite("public/user_images/#{@user.id}.JPG",image.read)
+      @user.image_name= "#{@user.id}.JPG"
+      image = params[:image]
+      File.binwrite("/Users/hosodaraimu/TUMIKI_app//public/user_images/#{@user.image_name}",image.read)
     end
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"

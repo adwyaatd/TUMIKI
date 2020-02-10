@@ -1,4 +1,16 @@
 class RulesController < ApplicationController
+  
+  before_action:ensure_current_user,{only:[:new,:create]}
+  before_action:forbid_edit_rules,{only:[:edit,:update,:destroy]}
+
+  def forbid_edit_rules
+    @rule = Rule.find_by(id:params[:id])
+    if @rule.user_id != @current_user.id
+      flash[:notice]="他のアカウントでの編集・操作はできません"
+      redirect_to("/users/#{@current_user.id}")
+    end
+  end
+
   def new
     @rule = Rule.where(user_id:@current_user.id)
   end

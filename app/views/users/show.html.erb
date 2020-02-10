@@ -2,20 +2,21 @@
 <%= render 'layouts/menu' %>
 
 <div class="container">
-   <div class="goal-wrapper">
-   <% if @goal.status == nil%>
-      <p>【目標】<%= @goal.goal %></p>
-      <p>【目的】<%= @goal.purpose %></p>
-      <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
-      <div class="achieve-btn">
-        <%= link_to("目標達成","/goals/#{@goal.id}/done",{method: "post"})%>
-      </div>
-   <% else %>
-     <div class="">
-     <%= link_to("目標を再設定しましょう","/goals/reset")%>
-     </div>
-   <% end %>
-  </div>
+  <% if @current_user.id == params[:id].to_i%>
+    <div class="goal-wrapper">
+      <% if @goal.status == nil%>
+        <p>【目標】<%= @goal.goal %></p>
+        <p>【目的】<%= @goal.purpose %></p>
+        <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
+        <div class="achieve-btn">
+          <%= link_to("目標達成","/goals/#{@goal.id}/done",{method: "post"})%>
+        </div>
+      <% else %>
+        <div class="">
+        <%= link_to("目標を再設定しましょう","/goals/#{@current_user.id}/reset")%>
+        </div>
+      <% end %>
+    </div>
 
     <% if rule = Rule.where(user_id:@current_user.id) %>
       <div class="rule-wrapper">
@@ -40,11 +41,12 @@
        </div>
       </div>
     <% end %>
+  <% end %>
 
     <ul class="user-tabs">
       <li class="active"><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
       <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-      <li><%= link_to("タスク","/tasks/#{@current_user.id}") %></li>
+      <li><%= link_to("タスク","/tasks/#{@user.id}") %></li>
     </ul>
     <% @user.posts.each do |post|%>
       <div class="user-posts-box">
