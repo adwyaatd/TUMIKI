@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get "/" => "home#top"
   get "/about" => "home#about"
   get "/posts/index" => "posts#index"
-  get "/posts/new" => "posts#new"
-  post "/posts/create" => "posts#create"
+  get "/posts/:id/new" => "posts#new"
+  post "/posts/:id/create" => "posts#create"
   get "/posts/:id" => "posts#show"
   get "/posts/:id/edit" => "posts#edit"
  post "/posts/:id/update" => "posts#update"
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
  get "/goals/:id/record" => "goal#record"
  post "/goals/:id/done" => "goal#done"
  post "/goals/:id/unfinish" => "goal#unfinish"
- get "/goals/reset" => "goal#reset"
+ get "/goals/:id/reset" => "goal#reset"
  post "/goals/:id/recreate" => "goal#recreate"
 
  post "/likes/:post_id/create" => "likes#create"
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
  get "/tasks/:id/new" => "tasks#new"
  get "/tasks/:id/edit" => "tasks#edit"
- post "/tasks/create" => "tasks#create"
+ post "/tasks/:id/create" => "tasks#create"
  post "/tasks/:id/destroy" => "tasks#destroy"
  post "/tasks/:id/done" => "tasks#done"
  post "/tasks/:id/unfinish" => "tasks#unfinish"
@@ -49,8 +49,8 @@ Rails.application.routes.draw do
 
  get "/rules/:id/new" => "rules#new"
  post "/rules/:id/create" =>"rules#create"
- post "rules/:id/update" => "rules#update"
+ post "/rules/:id/update" => "rules#update"
  get "/rules/:id/edit" => "rules#edit"
- post "rules/:id/destroy" => "rules#destroy"
+ post "/rules/:id/destroy" => "rules#destroy"
  
 end

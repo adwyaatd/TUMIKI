@@ -9,7 +9,7 @@
           <%= link_to("ホームへ戻る","/users/#{@current_user.id}") %>
         </li>
         <li>
-        　<%= link_to("新規投稿","/posts/new")%>
+        　<%= link_to("今日の積み上げ","/posts/#{@current_user.id}/new")%>
         </li>
         <li>
           <%= link_to("タスク管理","/tasks/#{@current_user.id}/new") %>
@@ -23,6 +23,6 @@
         <li>
           <%= link_to("マイルール設定","/rules/#{@current_user.id}/new") %>
         </li> 
+        <% end %>
     　</ul>
     </div>
-   <% end %>
