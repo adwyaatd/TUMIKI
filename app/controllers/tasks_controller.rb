@@ -1,4 +1,17 @@
 class TasksController < ApplicationController
+
+before_action:autenticate_user,{only:[:index]}
+before_action:ensure_current_user,{only:[:new,:create]}
+before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
+
+  def forbid_edit_tasks
+    @task = Task.find_by(id:params[:id])
+    if @task.user_id != @current_user.id
+      flash[:notice]="他のアカウントでの編集・操作はできません"
+      redirect_to("/users/#{@current_user.id}")
+    end
+  end
+
   def index
   	@user = User.find_by(id: params[:id])
     @goal = Goal.find_by(user_id: @current_user.id)

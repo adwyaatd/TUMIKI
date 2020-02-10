@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
-  before_action:autenticate_user
-  before_action:ensure_current_user,{only:[:edit,:update,:destroy]}
+  before_action:autenticate_user,{only:[:index,:show]}
+  before_action:ensure_current_user,{only:[:new,:create]}
+  before_action:forbid_edit_posts,{only:[:edit,:update,:destroy]}
 
-  def ensure_current_user
+  def forbid_edit_posts
     @post = Post.find_by(id:params[:id])
     if @post.user_id != @current_user.id
-      flash[:notice]="他のアカウントの編集はできません"
-      redirect_to("/posts/index")
+      flash[:notice]="他のアカウントでの編集・操作はできません"
+      redirect_to("/users/#{@current_user.id}")
     end
   end
 
