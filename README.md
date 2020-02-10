@@ -16,8 +16,8 @@ http://raimuhosoda02.work/
 上記URLの「ゲストログイン」からゲストユーザーとして利用可能です。
 
 # 使用技術
-* Ruby：2.6.2
-* Rails：5.2.3
+* Ruby：2.6.3
+* Rails：5.0.7.2
 * AWS
     * Route53
     * VPC
