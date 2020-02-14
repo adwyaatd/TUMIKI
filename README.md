@@ -28,6 +28,7 @@ http://raimuhosoda02.work/
 * SASS
 * JQuery
 * RSpec
+* Mysql　
 
 【追加予定】
 
