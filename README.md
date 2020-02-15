@@ -26,7 +26,7 @@ http://raimuhosoda02.work/
 * nginx
 * HTML
 * SASS
-* JQuery
+* jQuery
 * RSpec
 * Mysql　
 
