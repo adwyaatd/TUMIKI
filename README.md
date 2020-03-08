@@ -15,9 +15,12 @@
 http://raimuhosoda02.work/  
 上記URLの「ゲストログイン」からゲストユーザーとして利用可能です。
 
-Docker、ECSを使用してデプロイすることをコンセプトにした掲示板サイトの第2ポートフォリオもあります。  
+Docker、ECSを使用してデプロイすることをコンセプトにした掲示板サイトの第2ポートフォリオも作成中です。  
 GitHub：https://github.com/adwyaatd/KEYAKI  
 URL:https://keyaki-h2.herokuapp.com/  
+
+# 【その他開発環境】
+* GitHub　issue、Pull Requestで仮想チーム開発
 
 # 使用技術
 * Ruby：2.6.3
