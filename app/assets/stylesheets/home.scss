@@ -164,20 +164,21 @@ header {
 .top-message {
   position: relative;
   margin: auto;
- 
-h2 {
-  font-size: 30px;
-  -webkit-font-smoothing: antialiased;
-}
+  font-family: serif;
 
-h3 {
-  font-size: 28px;
-  -webkit-font-smoothing: antialiased;
-}
- p {
-  font-size: 33px;
-  margin-top: 20px;
-}
+  h2 {
+    font-size: 30px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h3 {
+    font-size: 28px;
+    -webkit-font-smoothing: antialiased;
+  }
+  p {
+    font-size: 33px;
+    margin-top: 20px;
+  }
 }
 /* about ================================ */
 .about-main {
