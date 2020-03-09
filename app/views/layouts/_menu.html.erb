@@ -3,25 +3,25 @@
         <% if @current_user %>
         <li>
         <img src="<%="/user_images/#{@current_user.image_name}"%>">
-        <br><%= link_to(@current_user.name,"/users/#{@current_user.id}/edit")%>
+        <br><%= link_to @current_user.name,edit_user_path(@current_user)%>
         </li>
         <li>
-          <%= link_to("ホームへ戻る","/users/#{@current_user.id}") %>
+          <%= link_to "ホームへ戻る",user_path(@current_user) %>
         </li>
         <li>
-        　<%= link_to("今日の積み上げ","/posts/#{@current_user.id}/new")%>
+        　<%= link_to "今日の積み上げ", new_post_path(@current_user)%>
         </li>
         <li>
-          <%= link_to("タスク管理","/tasks/#{@current_user.id}/new") %>
+          <%= link_to "タスク管理",new_task_path %>
         </li>
         <li>
-          <%= link_to("達成済み目標","/goals/#{@current_user.id}/record") %>
+          <%= link_to "達成済み目標",record_goals_path %>
         </li>
         <li>
-          <%= link_to("目標の更新・変更","/goals/#{@current_user.id}/edit_goal") %>
+          <%= link_to "目標の更新・変更", edit_goal_path(@current_user)%>
         </li>
         <li>
-          <%= link_to("マイルール設定","/rules/#{@current_user.id}/new") %>
+          <%= link_to "マイルール設定",new_rule_path %>
         </li> 
         <% end %>
     　</ul>

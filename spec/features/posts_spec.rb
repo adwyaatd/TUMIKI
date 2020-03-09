@@ -27,14 +27,14 @@ RSpec.feature "Posts", type: :feature do
     visit root_path
 
     # ログイン画面へ遷移
-    # find_link ("ログイン").click
+    # click_on "ログイン"
 
-    # #アドレスとパスワードを入力してログイン
-    # fill_in "email", with: user.email
-    # fill_in "password", with: user.password
-    # click_button"ログイン"
+    #アドレスとパスワードを入力してログイン
+    fill_in "email", with: user.email
+    fill_in "password", with: user.password
+    click_button"ログイン"
 
-    # #ログイン成功のフラッシュメッセージが表示される
-    # expect(page).to have_content "ログインしました"
+    #ログイン成功のフラッシュメッセージが表示される
+    expect(page).to have_content "ログインしました"
   end
 end

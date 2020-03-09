@@ -3,6 +3,7 @@
   <%= render 'layouts/menu' %>
 
  <div class="container">
+    <h1 class="users-heading">全投稿一覧</h1>
     <% @posts.each do |post|%>
     <div class="posts-index-item">
       <div class="post-left">
@@ -10,9 +11,9 @@
       </div>
       <div class="post-right">
         <div class="post-user-name">
-           <%= link_to(post.user.name,"/users/#{post.user.id}")%>
+           <%= link_to post.user.name, user_path(post.user_id)%>
         </div>
-        <%= link_to(post.content,"/posts/#{post.id}") %>
+        <%= link_to post.content,post_path(post) %>
       </div>
      </div>
     <% end %>
