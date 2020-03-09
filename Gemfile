@@ -53,7 +53,7 @@ group :development, :test do
   gem 'hirb-unicode'
   gem "awesome_print"
   gem 'rspec-rails'
-  gem 'chromedriver-helper', '~> 1.1.0'
+  gem 'webdrivers'
   gem 'capybara'
 end
 
