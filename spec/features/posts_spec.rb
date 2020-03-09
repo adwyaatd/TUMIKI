@@ -23,7 +23,7 @@ RSpec.feature "Posts", type: :feature do
       user_id:1
     )
 
-    #　トップページへアクセス
+    #トップページへアクセス
     visit root_path
 
     # ログイン画面へ遷移
