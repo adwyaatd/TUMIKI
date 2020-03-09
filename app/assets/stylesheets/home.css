@@ -170,6 +170,7 @@ header {
 .top-message {
   position: relative;
   margin: auto;
+  font-family: serif;
 }
 
 .top-message h2 {
