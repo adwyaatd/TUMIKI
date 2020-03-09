@@ -15,10 +15,10 @@
             </div>
             <div class="foot-wrapper">
               <div class="likes_count">
-                <%= link_to("未完了へ戻す","/goals/#{goal.id}/unfinish",{method: "post"})%>
+                <%= link_to "未完了へ戻す",unfinish_goal_path(goal),method: :post%>
               </div>
               <div class="likes_count">
-                <%= link_to("削除","/goals/#{goal.id}/destroy",{method: "post"})%>
+                <%= link_to "削除",goal_path(goal),method: :delete%>
               </div>
             </div>
           <% end %>

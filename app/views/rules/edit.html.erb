@@ -7,7 +7,7 @@
 
    <div class="form">
     <div class="form-body">
-       <%= form_tag("/rules/#{@rule.id}/update") do %>
+       <%= form_tag rule_path(@rule),method: :PATCH do %>
          <input name="content" value="<%= @rule.content %>">
          <input type="submit" value="更新">
        <% end %>
