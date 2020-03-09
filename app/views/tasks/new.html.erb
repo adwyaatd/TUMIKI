@@ -3,7 +3,7 @@
 
 <div class = "container">
   <h1 class = "form-heading">タスク管理</h1>
-  <%= form_tag("/tasks/#{@current_user.id}/create") do %>
+  <%= form_tag tasks_path,method: :post do%>
     <div class ="form">
       <div class ="form-body">
         <p>タスクを追加</p>
@@ -16,7 +16,7 @@
   <% @user.tasks.each do |task|%>
     <div class="user-posts-box">
       <div class="post-content">
-        <%= link_to(task.content,"/tasks/#{task.id}/edit") %> 
+        <%= link_to task.content,edit_task_path(task) %> 
      </div>
      <div class="foot-wrapper">
       <div class="posting-time">

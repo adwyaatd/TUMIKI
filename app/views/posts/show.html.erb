@@ -13,21 +13,21 @@
       <div class="post-time">
         <%= @post.created_at %>
       </div>
-      <% if Like.find_by(user_id:@current_user.id,post_id:@post.id) %>
-        <%= link_to("/likes/#{@post.id}/destroy",{method:"post"}) do %>
+      <% if  @like%>
+        <%= link_to like_path(@like),method: :delete do %>
          <span class="fa fa-heart btn-to-unlike">いいね！済み</span>
         <% end %>
         <%= @like_count %>
       <% else %>
-        <%= link_to("/likes/#{@post.id}/create",{method:"post"}) do %>
+        <%= link_to post_likes_path(@post),method: :post do %>
           <span class="fa fa-heart btn-to-like"></span>いいね！
         <% end %>
         <%= @like_count %>
       <% end %>
       <% if @post.user_id == @current_user.id %>
       <div class="post-menus">
-        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-        <%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %>
+        <%= link_to "編集",edit_post_path%>
+        <%= link_to "削除",post_path,method: :delete %>
       </div>
       <% end %>
     </div>

@@ -1,14 +1,13 @@
 class TasksController < ApplicationController
 
 before_action:autenticate_user,{only:[:index]}
-before_action:ensure_current_user,{only:[:new,:create]}
 before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
 
   def forbid_edit_tasks
     @task = Task.find_by(id:params[:id])
     if @task.user_id != @current_user.id
       flash[:notice]="他のアカウントでの編集・操作はできません"
-      redirect_to("/users/#{@current_user.id}")
+      redirect_to user_url(id: @task.user_id)
     end
   end
 
@@ -31,9 +30,9 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
   	  user_name:@user.name
   	)
   	if @task.save
-  	 redirect_to("/tasks/#{@current_user.id}/new")
+  	 redirect_to tasks_url(id: @user.id)
     else
-     render("tasks#new")
+     render action: :new
     end
   end
 
@@ -46,9 +45,9 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.content= params[:content]
     if @task.save
       flash[:notice]="タスクを編集しました"
-      redirect_to("/tasks/#{@current_user.id}")
+      redirect_to tasks_url(id: @user.id)
     else
-      render("tasks/#{@current_user.id}/edit")
+      render action: :edit
     end
   end
 
@@ -57,9 +56,9 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.status = "done"
 
     if @task.save
-      redirect_to("/tasks/#{@current_user.id}")
+      redirect_to tasks_url(id: @user.id)
     else
-      render("tasks#index")
+      render action: :index
     end
   end
 
@@ -68,15 +67,15 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.status = nil
 
     if @task.save
-     redirect_to("/tasks/#{@current_user.id}")
+     redirect_to tasks_url(id: @user.id)
     else
-      render("tasks#index")
+      render action: :index
     end 
   end
 
   def destroy
     @task = Task.find_by(id: params[:id])
     @task.destroy
-    redirect_to("/tasks/#{@current_user.id}")
+    redirect_to tasks_url(id: @user.id)
   end
 end

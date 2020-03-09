@@ -1,12 +1,12 @@
-class GoalController < ApplicationController
+class GoalsController < ApplicationController
 before_action:autenticate_user,{only:[:record]}
-before_action:ensure_current_user,{only:[:edit_goal,:update,:set_goal,:create_goal,:reset,:recreate,:done,:unfinish,:destroy]}
+before_action:ensure_current_user,{only:[:edit,:update,:new,:create,:reset,:recreate,:done,:unfinish,:destroy]}
 
-  def set_goal
+  def new
     @goal=Goal.new
   end
 
-  def create_goal
+  def create
     @user = User.find_by(id:@current_user.id)
     @user_name = @user.name
     @goal = Goal.new(
@@ -18,13 +18,13 @@ before_action:ensure_current_user,{only:[:edit_goal,:update,:set_goal,:create_go
    )
     if @goal.save
       flash[:notice] = "大目標設定完了です"
-      redirect_to("/posts/#{@current_user.id}/new")
+      redirect_to new_post_url(@user)
     else
-      render("/goals/#{@current_user.id}/set_goal")
+      render action: new
     end
   end
 
-  def edit_goal
+  def edit
     @goal = Goal.find_by(user_id:@current_user.id)
   end
 
@@ -93,6 +93,7 @@ before_action:ensure_current_user,{only:[:edit_goal,:update,:set_goal,:create_go
 
   def record
     @user = User.find_by(id: @current_user.id)
+    @goal= Goal.find_by status:"done",user_id:@current_user.id
   end
 
 end

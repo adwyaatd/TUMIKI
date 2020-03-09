@@ -9,11 +9,11 @@
         <p>【目的】<%= @goal.purpose %></p>
         <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
         <div class="achieve-btn">
-          <%= link_to("目標達成","/goals/#{@goal.id}/done",{method: "post"})%>
+          <%= link_to "目標達成",done_goal_path(@goal),method: :post%>
         </div>
       <% else %>
         <div class="">
-        <%= link_to("目標を再設定しましょう","/goals/#{@current_user.id}/reset")%>
+        <%= link_to "目標を再設定しましょう",reset_goal_path(@goal) %>
         </div>
       <% end %>
     </div>
@@ -22,12 +22,12 @@
       <div class="rule-wrapper">
         <p>【マイルール】</p>
         <% rule.each do |rule| %>       
-         <p><%= link_to(rule.content,"/rules/#{rule.id}/edit") %></p>
+         <p><%= link_to rule.content, edit_rule_path(rule) %></p>
          <% end %>
       </div>
     <% end %>
 
-    <%= form_tag("/users/#{@current_user.id}/posts_create")do %>
+    <%= form_tag posts_create_users_path do %>
       <div class="post-form">
        <div class="post-form-body">
          <% @post.errors.full_messages.each do |message| %>
@@ -44,14 +44,14 @@
   <% end %>
 
     <ul class="user-tabs">
-      <li class="active"><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
-      <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-      <li><%= link_to("タスク","/tasks/#{@user.id}") %></li>
+      <li class="active"><%= link_to "今までの積み上げ", user_path(@user) %></li>
+      <li><%= link_to "いいね!", likes_user_path(@user) %></li>
+      <li><%= link_to "タスク", tasks_path(id: @user.id) %></li>
     </ul>
     <% @user.posts.each do |post|%>
       <div class="user-posts-box">
         <div class="post-content">
-         <%= link_to(post.content,"/posts/#{post.id}") %> 
+         <%= link_to post.content,post_path(post) %> 
         </div>
         <div class="foot-wrapper">
           <div class="likes_count">

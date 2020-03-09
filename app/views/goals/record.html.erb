@@ -3,9 +3,9 @@
 
   <div class = "container">
     <h1 class="form-heading">達成済み目標一覧</h1>
-    <% @user.goals.each do |goal|%>
-      <% if goal.status == "done" %>
-          <div class="form">
+      <div class="goal-wrapper">
+        <% if @goal %>
+          <% @user.goals.each do |goal|%>
             <div class="post-content">
               <p>【達成日時】<%= goal.updated_at %></p>
               <p>【目標】<%= goal.goal %></p>
@@ -21,8 +21,10 @@
                 <%= link_to("削除","/goals/#{goal.id}/destroy",{method: "post"})%>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>達成済み目標はまだありません。</p>
         <% end %>
-    <% end %>
+      </div>
   </div>
 </div>

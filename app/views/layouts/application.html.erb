@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= favicon_link_tag('favicon.ico') %>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -18,25 +19,25 @@
     <header>
       <div class="header-logo">
         <% if @current_user %>
-          <%= link_to("ホーム","/users/#{@current_user.id}")%>
+          <%= link_to "ホーム", user_path(@current_user.id) %>
         <% else %>
-          <%= link_to("TUMIKI","/")%>
+          <%= link_to "TUMIKI",root_path%>
         <% end %>
       </div>
       <ul class="header-menus">
         <% if @current_user %>
           <li>
-            <%= link_to("ユーザー一覧","/users/index") %>
+            <%= link_to "ユーザー一覧", users_path%>
           </li>
           <li>
-            <%= link_to("ユーザー投稿一覧","/posts/index")%>
+            <%= link_to "全投稿一覧",posts_path %>
           </li>
           <li>
             <a id="logout">ログアウト</a>
           </li>
         <% else %>
           <li>
-            <%= link_to("TUMIKIとは","/about")%>
+            <%= link_to "TUMIKIとは",about_path %>
           </li>
           <li>
             <a id="guest-login">ゲストログイン</a> 
@@ -64,7 +65,7 @@
     </div>
     <div id="login-form">
     <h2>ユーザーログイン</h2>
-      <%= form_tag("/login") do%>
+      <%= form_tag login_users_path do%>
         <p>メールアドレス</p>
         <input class="form-control" name="email" value="<%=@email%>">
         <p>パスワード</p>
@@ -82,7 +83,7 @@
     </div>
     <div id="login-form">
     <h2>ゲストユーザーでログインしますか？</h2>
-      <%= form_tag("/login") do%>
+      <%= form_tag login_users_path do%>
         <input class="form-control" name="email" value="guestuser@gmail.com">
         <input class="form-control" name="password" type="password" value="guestuser">
         <input class="submit-btn" type="submit" value="ログイン">
@@ -99,7 +100,7 @@
 
     <div id="signup-form">
       <h2>新規ユーザー登録</h2>
-       <%= form_tag("/users/create") do %>
+       <%= form_tag  users_path do %>
           <p>ユーザー名</p>
           <input name="name" value="<%= @name %>">
           <p>メールアドレス</p><p></p>
@@ -112,21 +113,21 @@
   </div>
 </div>
 
-  <div class="logout-modal-wrapper" id="logout-modal">
-   <div class="modal">
-     <div class="close-modal">
-      <i class="fa fa-2x fa-times"></i>
-     </div>
-     <div id="login-form">
-      <h2>ログアウトしますか</h2>
-        <div class="yes-no">
-          <%= link_to("はい","/logout",{method:"post"})%>
+    <div class="logout-modal-wrapper" id="logout-modal">
+      <div class="modal">
+        <div class="close-modal">
+        <i class="fa fa-2x fa-times"></i>
         </div>
-       <div id="logout-no" class="yes-no">
-        <a>いいえ</a>
-       </div>
+        <div id="login-form">
+        <h2>ログアウトしますか</h2>
+          <div class="yes-no">
+            <%= link_to "はい", logout_users_path,method: :post%>
+          </div>
+          <div id="logout-no" class="yes-no">
+          <a>いいえ</a>
+          </div>
+      </div>
     </div>
-   </div>
   </div>
   </body>
 </html>
