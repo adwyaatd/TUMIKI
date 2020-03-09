@@ -108,4 +108,10 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     @user=User.find_by(id:params[:id])
     @like=Like.where(user_id:@user.id)
   end
+
+  def tasks
+  	@user = User.find_by(id: params[:id])
+    @goal = Goal.find_by(user_id: @current_user.id)
+    @post = Post.new
+  end
 end

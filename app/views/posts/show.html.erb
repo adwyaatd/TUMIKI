@@ -5,7 +5,7 @@
     <div class="posts-show-item">
       <div class="post-user-name">
         <img src="<%="/user_images/#{@user.image_name}"%>">
-        <%= link_to("#{@user.name}","/users/#{@user.id}") %>
+        <%= link_to @user.name,user_path(@user) %>
       </div>
       <p>
         <%= @post.content %>

@@ -11,11 +11,11 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     end
   end
 
-  def index
-  	@user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(user_id: @current_user.id)
-    @post = Post.new
-  end
+  # def index
+  # 	@user = User.find_by(id: params[:id])
+  #   @goal = Goal.find_by(user_id: @current_user.id)
+  #   @post = Post.new
+  # end
 
   def new
   	@task = Task.new
@@ -30,7 +30,7 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
   	  user_name:@user.name
   	)
   	if @task.save
-  	 redirect_to tasks_url(id: @user.id)
+  	 redirect_to tasks_user_url(id: @user.id)
     else
      render action: :new
     end
@@ -45,7 +45,7 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.content= params[:content]
     if @task.save
       flash[:notice]="タスクを編集しました"
-      redirect_to tasks_url(id: @user.id)
+      redirect_to tasks_user_url(id: @task.user_id)
     else
       render action: :edit
     end
@@ -56,7 +56,7 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.status = "done"
 
     if @task.save
-      redirect_to tasks_url(id: @user.id)
+      redirect_to tasks_user_url(id: @task.user_id)
     else
       render action: :index
     end
@@ -67,7 +67,7 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task.status = nil
 
     if @task.save
-     redirect_to tasks_url(id: @user.id)
+     redirect_to tasks_user_url(id: @task.user_id)
     else
       render action: :index
     end 
@@ -76,6 +76,6 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
   def destroy
     @task = Task.find_by(id: params[:id])
     @task.destroy
-    redirect_to tasks_url(id: @user.id)
+    redirect_to tasks_user_url(id: @task.user_id)
   end
 end
