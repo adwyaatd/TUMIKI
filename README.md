@@ -25,7 +25,7 @@ URL:https://keyaki-h2.herokuapp.com/
 
 # 使用技術
 * Ruby：2.6.3
-* Ruby on Rails：5.0.7.2
+* Ruby on Rails：5.2.4.1
 * AWS
     * Route53
     * VPC
