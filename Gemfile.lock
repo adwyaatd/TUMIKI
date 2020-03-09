@@ -217,7 +217,7 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (0.1.1)
-    unicorn (5.5.3)
+    unicorn (5.4.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     web-console (3.7.0)
