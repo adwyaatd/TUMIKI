@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action:autenticate_user,{only:[:index,:show]}
-  before_action:ensure_current_user,{only:[:new,:create]}
   before_action:forbid_edit_posts,{only:[:edit,:update,:destroy]}
 
   def forbid_edit_posts
@@ -18,6 +17,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @user = @post.user
+    @like=Like.find_by(user_id:@current_user.id,post_id:@post.id)
     @like_count=Like.where(post_id:@post.id).count
   end
 
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
    @post.content = params[:content]
    if @post.save
      flash[:notice] = "投稿を編集しました"
-     redirect_to("/posts/index")
+     redirect_to @post
    else
      render("posts/edit")
    end
@@ -57,6 +57,6 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     @post.destroy
     flash[:notice] = "投稿を削除しました"
-    redirect_to("/posts/index")
+    redirect_to user_url @current_user.id
   end
 end

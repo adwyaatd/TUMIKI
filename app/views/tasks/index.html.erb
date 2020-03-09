@@ -1,23 +1,55 @@
-<div class = "main">
- <%= render 'layouts/menu' %>
+<div class="main">
+<%= render 'layouts/menu' %>
 
- <div class = "container">
+<div class="container">
   <% if @current_user.id == params[:id].to_i%>
     <div class="goal-wrapper">
-      <p>【目標】<%= @goal.goal %></p>
-      <p>【目的】<%= @goal.purpose %></p>
-      <p>【達成期日】<%= @goal.date %></p>
+      <% if @goal.status == nil%>
+        <p>【目標】<%= @goal.goal %></p>
+        <p>【目的】<%= @goal.purpose %></p>
+        <p>【達成期日】<%= @goal.date.strftime("%Y年%-m月%-d日") %></p>
+        <div class="achieve-btn">
+          <%= link_to "目標達成",done_goal_path(@goal),method: :post%>
+        </div>
+      <% else %>
+        <div class="">
+        <%= link_to "目標を再設定しましょう",reset_goal_path(@goal) %>
+        </div>
+      <% end %>
     </div>
+
+    <% if rule = Rule.where(user_id:@current_user.id) %>
+      <div class="rule-wrapper">
+        <p>【マイルール】</p>
+        <% rule.each do |rule| %>       
+         <p><%= link_to rule.content, edit_rule_path(rule) %></p>
+         <% end %>
+      </div>
+    <% end %>
+
+    <%= form_tag posts_create_users_path do %>
+      <div class="post-form">
+       <div class="post-form-body">
+         <% @post.errors.full_messages.each do |message| %>
+         <div class="form-error">
+          <%= message %>
+         </div>
+       <% end %>
+         <p>今日の積み上げ</p>   
+         <textarea name="content"><%= @post.content %></textarea>
+         <input type="submit" value="投稿">
+       </div>
+      </div>
+    <% end %>
   <% end %>
 
-  <ul class="user-tabs">
-   <li><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
-   <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-   <li class="active"><%= link_to("タスク","/tasks/#{@current_user.id}") %></li>
-  </ul>
+    <ul class="user-tabs">
+      <li><%= link_to "今までの積み上げ", user_path(@user) %></li>
+      <li><%= link_to "いいね!", likes_user_path(@user) %></li>
+      <li class="active"><%= link_to "タスク", tasks_path(id: @user.id) %></li>
+    </ul>
 
   <div class="task-wrapper">
-    
     <div class="tasks-index">
       <div class="tasks-title">
         <p>【タスク一覧】</p>
@@ -26,15 +58,15 @@
         <% if task.status == nil %>
           <div class="task-box">
             <div class="task-content">
-              <%= link_to(task.content,"/tasks/#{task.id}/edit") %> 
+              <%= link_to task.content, edit_task_path(task)%> 
             </div>
             <% if @current_user.id == params[:id].to_i%>
               <div class="foot-wrapper">
                 <div class="likes_count">
-                  <%= link_to("完了","/tasks/#{task.id}/done",{method: "post"})%>
+                  <%= link_to "完了",done_task_path(task),method: :post %>
                 </div>
                 <div class="likes_count">
-                  <%= link_to("削除","/tasks/#{task.id}/destroy",{method: "post"}) %>
+                  <%= link_to "削除",task_path(task),method: :delete %>
                 </div>
                 <!-- <div class="posting-time">
                   <%= task.created_at %>
@@ -54,14 +86,14 @@
         <% if task.status == "done" %>
           <div class="done-task-box">
             <div class="task-content">
-              <%= link_to(task.content,"/tasks/#{task.id}/edit") %>
+              <%= link_to task.content,edit_task_path(task)%>
             </div>
             <div class="foot-wrapper">
               <div class="likes_count">
-                <%= link_to("未完了へ戻す","/tasks/#{task.id}/unfinish",{method: "post"})%>
+                <%= link_to "未完了へ戻す",unfinish_task_path(task),method: :post%>
               </div>
               <div class="likes_count">
-                <%= link_to("削除","/tasks/#{task.id}/destroy",{method: "post"}) %>
+                <%= link_to "削除",task_path(task),method: :delete %>
               </div>
             </div>
           </div>
