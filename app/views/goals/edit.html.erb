@@ -7,7 +7,7 @@
 
    <div class="form">
     <div class="form-body">
-        <%= form_tag("/goals/#{@current_user.id}/update") do %>
+        <%= form_tag goal_path( @current_user),method: :patch do %>
           <P>あなたの目標は何ですか？</P>
             <input name="goal" value="<%= @goal.goal %>">
           <p>その目的は何でしょう？</p>

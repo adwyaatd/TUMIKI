@@ -43,7 +43,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     if @user.save
      session[:user_id] = @user.id
      flash[:notice] = "ユーザー登録完了です"
-     redirect_to("/goals/#{@user.id}/set_goal")
+     redirect_to new_goal_url(@user)
    else
      @name = params[:name]
      @email = params[:email]
@@ -94,7 +94,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   def logout
     session[:user_id] = nil
     flash[:notice] = "ログアウトしました"
-    redirect_to("/")
+    redirect_to root_url
   end
 
   def likes
@@ -107,5 +107,11 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   def goals
     @user=User.find_by(id:params[:id])
     @like=Like.where(user_id:@user.id)
+  end
+
+  def tasks
+  	@user = User.find_by(id: params[:id])
+    @goal = Goal.find_by(user_id: @current_user.id)
+    @post = Post.new
   end
 end

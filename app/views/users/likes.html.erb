@@ -1,49 +1,30 @@
 <div class="main">
- <%= render 'layouts/menu' %>
+  <%= render 'layouts/menu' %>
 
   <div class="container">
-    <% if @current_user.id == params[:id].to_i %>
-      <div class="goal-wrapper ">
-        <p>【目標】<%= @goal.goal %></p>
-        <p>【目的】<%= @goal.purpose %></p>
-        <p>【達成期日】<%= @goal.date %></p>
-      </div>
+    <%= render "user_top"%>
 
-      <%= form_tag("/users/posts_create")do %>
-        <div class="post-form">
-        <div class="post-form-body">
-          <% @post.errors.full_messages.each do |message| %>
-          <div class="form-error">
-            <%= message %>
-          </div>
-          <% end %>
-          <p>今日の積み上げ</p>   
-          <textarea name="content"></textarea>
-          <input type="submit" value="投稿">
-        </div>
-        </div>
-      <% end %>
-    <% end %>
     <ul class="user-tabs">
-     <li><%= link_to("今までの積み上げ", "/users/#{@user.id}") %></li>
-     <li class="active"><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
-     <li><%= link_to("タスク","/tasks/#{@current_user.id}") %></li>
+      <li><%= link_to "今までの積み上げ", user_path(@user) %></li>
+      <li class="active"><%= link_to "いいね!", likes_user_path(@user) %></li>
+      <li><%= link_to "タスク", tasks_user_path(@user) %></li>
     </ul>
+
     <% @like.each do |like|%>
-     <% post=Post.find_by(id:like.post_id)%>
+      <% post=Post.find_by(id:like.post_id)%>
       <div class="posts-index-item">
         <div class="post-left">
           <img src="<%= "/user_images/#{post.user.image_name}" %>">
         </div>
         <div class="post-right">
           <div class="post-user-name">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+            <%= link_to post.user.name, user_path(post.user.id) %>
           </div>
-          <%= link_to(post.content, "/posts/#{post.id}") %>
+          <%= link_to post.content, post_path(post) %>
           <div class="foot-wrapper">
             <div class="likes_count">
-             <span class= "fa fa-heart btn-to-unlike"></span>
-             <%= Like.where(post_id: post.id).count %>
+              <span class= "fa fa-heart btn-to-unlike"></span>
+              <%= Like.where(post_id: post.id).count %>
             </div>
             <div class="posting-time">
               <%= post.created_at %>
@@ -53,5 +34,4 @@
       </div>
     <% end %>
   </div>
-
 </div>

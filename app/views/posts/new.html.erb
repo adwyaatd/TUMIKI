@@ -2,7 +2,7 @@
   <%= render 'layouts/menu' %>
   <div class="container">
     <h1 class="form-heading">今日の積み上げを投稿</h1>
-    <%= form_tag("/posts/#{@current_user.id}/create")do %>
+    <%= form_tag posts_path do %>
       <div class="form">
         <div class="form-body">
           <% @post.errors.full_messages.each do |message| %>
