@@ -14,7 +14,8 @@
 
 # URL
 http://raimuhosoda02.work/  
-上記URLの「ゲストログイン」からゲストユーザーとして利用可能です。
+上記URLの「ゲストログイン」からゲストユーザーとして利用可能です。  
+※CloudWatchによるコスト管理の一環で、原則、稼働時間は平日9:00~20:00に設定しています。
 
 Docker、ECSを使用してデプロイすることをコンセプトにした掲示板サイトの第2ポートフォリオも作成中です。  
 GitHub：https://github.com/adwyaatd/KEYAKI  
@@ -30,6 +31,7 @@ URL:https://keyaki-h2.herokuapp.com/
     * Route53
     * VPC
     * EC2
+    * CloudWatch    
 * Unicorn
 * nginx
 * HTML
