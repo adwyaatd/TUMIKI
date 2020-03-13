@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'webdrivers'
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development do
