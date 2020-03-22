@@ -27,16 +27,21 @@ URL:https://keyaki-h2.herokuapp.com/
 # 使用技術
 * Ruby：2.6.3
 * Ruby on Rails：5.2.4.1
+
 * AWS
     * Route53
     * VPC
     * EC2
     * CloudWatch    
+* CircleCI
+
 * Unicorn
 * nginx
+
 * HTML
 * SASS
 * jQuery
+
 * Mysql　
 
 【テスト環境】
@@ -46,7 +51,6 @@ URL:https://keyaki-h2.herokuapp.com/
 
 【追加予定】  
 * Docker
-* CircleCI
 
 # 機能一覧
 * ユーザー機能
