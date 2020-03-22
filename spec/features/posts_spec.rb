@@ -33,7 +33,7 @@ RSpec.feature "Posts", type: :feature do
         content:"テスト投稿",
         user_id:1
       )
-
+      
       # ログイン画面へ遷移
       # click_on "ログイン"
 
