@@ -35,7 +35,7 @@ RSpec.feature "Posts", type: :feature do
       )
 
       # ログイン画面へ遷移
-      click_on "ログイン"
+      # click_on "ログイン"
 
       # #アドレスとパスワードを入力してログイン
       # fill_in "email", with: user.email
