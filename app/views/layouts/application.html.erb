@@ -100,7 +100,8 @@
 
     <div id="signup-form">
       <h2>新規ユーザー登録</h2>
-       <%= form_tag  users_path do %>
+       <%= form_tag users_path  do %>
+        <%= %>
           <p>ユーザー名</p>
           <input name="name" value="<%= @name %>">
           <p>メールアドレス</p><p></p>

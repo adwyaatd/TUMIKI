@@ -1,31 +1,38 @@
 class GoalsController < ApplicationController
-before_action:autenticate_user,{only:[:record]}
-before_action:ensure_current_user,{only:[:edit,:update,:new,:create,:reset,:recreate,:done,:unfinish,:destroy]}
+  before_action:autenticate_user,{only:[:record]}
+  # before_action:ensure_current_user,{only:[:edit,:new,:create,:reset,:recreate,:done,:unfinish,:destroy]}
 
   def new
     @goal=Goal.new
   end
 
   def create
-    @user = User.find_by(id:@current_user.id)
-    @user_name = @user.name
-    @goal = Goal.new(
-     goal:params[:goal],
-     purpose:params[:purpose],
-     date:params[:date],
-     user_id:@current_user.id,
-     users_name:@user_name
-   )
+    @goal = Goal.new(goal_params)
+    @goal.user_id = @current_user.id
+    @goal.users_name = @current_user.name
     if @goal.save
       flash[:notice] = "大目標設定完了です"
-      redirect_to new_post_url(@user)
+      redirect_to new_post_url
     else
-      render action: new
+      render :new
     end
   end
 
   def edit
     @goal = Goal.find_by(user_id:@current_user.id)
+  end
+  
+  def update
+    @goal = Goal.find_by user_id:@current_user.id
+    #@goal.goal = params[:goal]
+    #@goal.purpose = params[:purpose]
+    #@goal.date = params[:date]
+    if @goal.update(goal_params)
+      flash[:notice] = "目標を更新しました！"
+      redirect_to user_url(@current_user)
+    else
+      render :edit
+    end
   end
 
   def reset
@@ -42,24 +49,12 @@ before_action:ensure_current_user,{only:[:edit,:update,:new,:create,:reset,:recr
     )
     if @goal.save
       flash[:notice] = "目標を再度作成・設定しました"
-      redirect_to("/users/#{@current_user.id}")
+      redirect_to user_url
     else
-      render("/goals/reset")
+      render action: reset
     end
   end
 
-  def update
-    @goal = Goal.find_by(user_id: @current_user.id)
-    @goal.goal = params[:goal]
-    @goal.purpose = params[:purpose]
-    @goal.date = params[:date]
-    if @goal.save
-      flash[:notice] = "目標を更新しました！"
-      redirect_to("/users/#{@current_user.id}")
-    else
-      render("/goals/#{@current_user.id}/edit_goal")
-    end
-  end
 
   def done
     @goal=Goal.find_by(id: params[:id])
@@ -94,6 +89,11 @@ before_action:ensure_current_user,{only:[:edit,:update,:new,:create,:reset,:recr
   def record
     @user = User.find_by(id: @current_user.id)
     @goal= Goal.find_by status:"done",user_id:@current_user.id
+  end
+
+  private
+  def goal_params
+    params.require(:goal).permit(:goal,:purpose,:date,:users_name,:user_id)
   end
 
 end
