@@ -7,14 +7,20 @@
 
    <div class="form">
     <div class="form-body">
-        <%= form_tag goal_path( @current_user),method: :patch do %>
-          <P>あなたの目標は何ですか？</P>
-            <input name="goal" value="<%= @goal.goal %>">
-          <p>その目的は何でしょう？</p>
-            <input name="purpose" value="<%= @goal.purpose %>">
-          <P>いつまでに達成しますか？</P>
-            <input type="date" name="date" value="<%= @goal.date %>">
-          <input type="submit" value="更新">
+        <%= form_with model: @goal do |f| %>
+          <%= f.label :goal,"あなたの目標は何ですか？"%>
+          <%= f.text_field :goal,value:@goal.goal%>
+
+          <%= f.label :purpose,"その目的は何でしょう？"%>
+          <%= f.text_field :purpose,value:@goal.purpose%>
+
+          <%= f.label :date,"いつまでに達成しますか？"%>
+          <br>
+          <%= f.date_field :date %>
+          <%#= f.date_select :date,{use_month_numbers:true} %>
+          <br>
+
+          <%= f.submit "更新する"%>
         <% end %>        
     </div>
    </div>

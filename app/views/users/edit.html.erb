@@ -9,14 +9,15 @@
             <%= message %>
           </div>
         <% end %>
-        <%= form_tag("/users/#{@user.id}/update",{multipart: true}) do %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @user.name %>">
-          <p>プロフィール画像</p>
-          <input name="image" type="file">
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @user.email %>">
-          <input type="submit" value="保存">
+        <%= form_with model:@user do |f| %>
+          <%= f.label :name,"ユーザー名"%>
+          <%= f.text_field :name %>
+          <%=  f.label :image_name%>
+          <%= f.file_field :image_name,id:"file-input" %>
+          <%= f.label :email,"メールアドレス"%>
+          <%= f.email_field :email %>
+          
+          <%= f.submit "保存",class:"submit-btn"%>
         <% end %>
       </div>
     </div>

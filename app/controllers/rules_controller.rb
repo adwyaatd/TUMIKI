@@ -27,18 +27,18 @@ class RulesController < ApplicationController
   	end
   end
 
+  def edit
+    @rule = Rule.find_by(id:params[:id])
+  end
+
   def update
     @rule = Rule.find_by(id:params[:id])
     @rule.content = params[:content]
     if @rule.save
-      redirect_to new_rule_path
+      redirect_to user_url
     else
       render template: "users/show"
     end
-  end
-
-  def edit
-    @rule = Rule.find_by(id:params[:id])
   end
   
   def destroy
