@@ -11,7 +11,7 @@
         <%= @post.content %>
       </p>
       <div class="post-time">
-        <%= @post.created_at %>
+        <%= simple_time(@post.created_at) %>
       </div>
       <% if  @like%>
         <%= link_to like_path(@like),method: :delete do %>

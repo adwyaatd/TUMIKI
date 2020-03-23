@@ -354,6 +354,7 @@ header {
   border-radius: 3px;
   margin: 10px auto;
   cursor: pointer;
+  color: white;
 }
 
 .yes-no a {

@@ -65,12 +65,15 @@
     </div>
     <div id="login-form">
     <h2>ユーザーログイン</h2>
-      <%= form_tag login_users_path do%>
-        <p>メールアドレス</p>
-        <input class="form-control" name="email" value="<%=@email%>">
-        <p>パスワード</p>
-        <input class="form-control" name="password" type="password" value="<%=@password%>">
-        <input class="submit-btn" type="submit" value="ログイン">
+      <%= form_with url:login_users_path do |f|%>
+        <%= f.label :email,"メールアドレス"%>
+        <br>
+        <%= f.email_field :email,class:"form-control"%>
+        <br>
+        <%= f.label :password,"パスワード"%>
+        <br>
+        <%= f.password_field :password,class:"form-control"%>
+        <%= f.submit "ログイン",class:"submit-btn"%>
       <% end %>
     </div>
   </div>
@@ -83,10 +86,10 @@
     </div>
     <div id="login-form">
     <h2>ゲストユーザーでログインしますか？</h2>
-      <%= form_tag login_users_path do%>
-        <input class="form-control" name="email" value="guestuser@gmail.com">
-        <input class="form-control" name="password" type="password" value="guestuser">
-        <input class="submit-btn" type="submit" value="ログイン">
+      <%= form_with url:login_users_path do |f| %>
+        <%= f.hidden_field :email,value:"guestuser@gmail.com" %>
+        <%= f.hidden_field :password,value:"guestuser" %>
+        <%= f.submit "ゲストログイン",class:"submit-btn"%>
       <% end %>
     </div>
   </div>
@@ -100,15 +103,19 @@
 
     <div id="signup-form">
       <h2>新規ユーザー登録</h2>
-       <%= form_tag users_path  do %>
-        <%= %>
-          <p>ユーザー名</p>
-          <input name="name" value="<%= @name %>">
-          <p>メールアドレス</p><p></p>
-          <input name="email" value="<%= @email %>">
-          <p>パスワード</p>
-          <input name="password" type="password" value="<%= @password %>">
-          <input class="submit-btn" type="submit" value="新規登録">
+        <%= form_with model:User.new do |f| %>
+          <%= f.label :name,"ユーザー名"%>
+          <br>
+          <%= f.text_field :name %>
+          <br>
+          <%= f.label :email,"メールアドレス"%>
+          <br>
+          <%= f.email_field :email %>
+          <br>
+          <%= f.label :password,"パスワード"%>
+          <br>
+          <%= f.password_field :password %>
+          <%= f.submit "新規登録",class:"submit-btn"%>
        <% end %>
     </div>
   </div>
@@ -121,8 +128,8 @@
         </div>
         <div id="login-form">
         <h2>ログアウトしますか</h2>
-          <div class="yes-no">
-            <%= link_to "はい", logout_users_path,method: :post%>
+          <div>
+            <%= link_to "はい", logout_users_path,method: :post,class:"yes-no"%>
           </div>
           <div id="logout-no" class="yes-no">
           <a>いいえ</a>

@@ -62,9 +62,9 @@ class GoalsController < ApplicationController
 
     if @goal.save
       flash[:noice] = "目標を達成しました！おめでとうございます！"
-      redirect_to("/goals/#{@goal.id}/record")
+      redirect_to record_goals_path
     else
-      render("users#show")
+      render template:"users/show"
     end
   end
 
@@ -76,7 +76,7 @@ class GoalsController < ApplicationController
       flash[:noice] = "目標達成状態を取り消しました"
       redirect_to("/goals/#{@goal.id}/record")
     else
-      render("users#show")
+      render template:"users/show"
     end 
   end
 
