@@ -6,21 +6,23 @@
       <div class="goal-wrapper">
         <% if @goal %>
           <% @user.goals.each do |goal|%>
+          <div class="border">
             <div class="post-content">
-              <p>【達成日時】<%= goal.updated_at %></p>
+              <p>【達成日時】<%= simple_time(goal.updated_at) %></p>
               <p>【目標】<%= goal.goal %></p>
               <p>【目的】<%= goal.purpose %></p>
               <p>【達成期日】<%= goal.date %></p>
-              <p>【設定日時】<%= goal. created_at%></p>
+              <p>【設定日時】<%= simple_time(goal.created_at)%></p>
             </div>
-            <div class="foot-wrapper">
-              <div class="likes_count">
+            <div class="end-wrapper">
+              <div class="unfinish-btn">
                 <%= link_to "未完了へ戻す",unfinish_goal_path(goal),method: :post%>
               </div>
-              <div class="likes_count">
+              <div class="unfinish-btn">
                 <%= link_to "削除",goal_path(goal),method: :delete%>
               </div>
             </div>
+          </div>
           <% end %>
         <% else %>
           <p>達成済み目標はまだありません。</p>

@@ -30,7 +30,7 @@
                     <%= link_to "削除",task_path(task),method: :delete %>
                   </div>
                   <!-- <div class="posting-time">
-                    <%= task.created_at %>
+                    <%= simple_time(task.created_at) %>
                   </div> -->
                 </div>
               <% end %>

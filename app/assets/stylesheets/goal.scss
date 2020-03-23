@@ -1,3 +1,25 @@
+/* goals/record ================================ */
+.border{
+  border: solid 0.1rem rgb(63, 63, 63);
+}
+
+.end-wrapper{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.unfinish-btn a{
+  background-color: #11a72a;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  margin: 0.3rem;
+  padding: 0.1rem;
+}
+
+
+
+/* goals/new ================================ */
 .set-goal-form{
   width: 700px;
   background-color: white;
