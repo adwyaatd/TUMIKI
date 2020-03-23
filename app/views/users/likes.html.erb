@@ -27,7 +27,7 @@
               <%= Like.where(post_id: post.id).count %>
             </div>
             <div class="posting-time">
-              <%= post.created_at %>
+              <%= simple_time(post.created_at) %>
             </div>
           </div>
         </div>

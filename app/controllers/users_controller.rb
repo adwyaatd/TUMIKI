@@ -10,7 +10,6 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def show
     @user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(user_id: @current_user.id)
     @post = Post.new
   end
 
@@ -34,21 +33,19 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   end
 
   def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password],
-      image_name: "default_user.JPG"
-    )
+    @user = User.new(user_params)
+      # name: params[:name],
+      # email: params[:email],
+      # password: params[:password],
+    @user.image_name ="default_user.JPG"
     if @user.save
      session[:user_id] = @user.id
      flash[:notice] = "ユーザー登録完了です"
-     redirect_to new_goal_url(@user)
+     redirect_to new_goal_url
    else
      @name = params[:name]
      @email = params[:email]
-     @password = params[:password]
-     render("users/new")
+     render :new
    end
   end
 
@@ -59,18 +56,17 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def update
     @user = User.find_by(id: params[:id])
-    @user.name = params[:name]
-    @user.email = params[:email]
-    if params[:image]
+    @user.update(user_params)
+    if params[:image_name]
       @user.image_name= "#{@user.id}.JPG"
-      image = params[:image]
+      image = params[:image_name]
       File.binwrite("/Users/hosodaraimu/TUMIKI_app//public/user_images/#{@user.image_name}",image.read)
     end
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
-      redirect_to("/users/#{@user.id}")
+      redirect_to user_url
     else
-      render("users/edit")
+      render :edit
     end
   end
 
@@ -101,7 +97,6 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     @post = Post.find_by(id:params[:id])
     @user=User.find_by(id:params[:id])
     @like=Like.where(user_id:@user.id)
-    @goal = Goal.find_by(user_id: @user.id)
   end
 
   def goals
@@ -111,7 +106,11 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def tasks
   	@user = User.find_by(id: params[:id])
-    @goal = Goal.find_by(user_id: @current_user.id)
     @post = Post.new
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name,:email,:password)
   end
 end
