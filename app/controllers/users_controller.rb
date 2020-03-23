@@ -43,12 +43,11 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     if @user.save
      session[:user_id] = @user.id
      flash[:notice] = "ユーザー登録完了です"
-     redirect_to new_goal_url(@user)
+     redirect_to new_goal_url
    else
      @name = params[:name]
      @email = params[:email]
-     @password = params[:password]
-     render("users/new")
+     render :new
    end
   end
 

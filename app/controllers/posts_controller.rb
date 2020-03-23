@@ -49,7 +49,7 @@ class PostsController < ApplicationController
      flash[:notice] = "投稿を編集しました"
      redirect_to @post
    else
-     render("posts/edit")
+     render :edit
    end
   end
 
