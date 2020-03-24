@@ -49,7 +49,7 @@ class GoalsController < ApplicationController
     )
     if @goal.save
       flash[:notice] = "目標を再度作成・設定しました"
-      redirect_to user_url
+      redirect_to user_url(@current_user)
     else
       render action: reset
     end
@@ -74,7 +74,7 @@ class GoalsController < ApplicationController
 
      if @goal.save
       flash[:noice] = "目標達成状態を取り消しました"
-      redirect_to("/goals/#{@goal.id}/record")
+      redirect_to record_goals_url
     else
       render template:"users/show"
     end 
@@ -83,7 +83,7 @@ class GoalsController < ApplicationController
   def destroy
     @goal = Goal.find_by(id: params[:id])
     @goal.destroy
-    redirect_to("/goals/#{@current_user.id}/record")
+    redirect_to record_goals_path
   end
 
   def record

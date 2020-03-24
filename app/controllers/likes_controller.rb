@@ -7,7 +7,7 @@ class LikesController < ApplicationController
       post_id:params[:post_id]
     )
     @like.save
-    redirect_to("/posts/#{params[:post_id]}")
+    redirect_to post_url(id: @like.post_id)
   end
 
   def destroy

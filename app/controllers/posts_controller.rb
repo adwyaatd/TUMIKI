@@ -6,7 +6,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id:params[:id])
     if @post.user_id != @current_user.id
       flash[:notice]="他のアカウントでの編集・操作はできません"
-      redirect_to("/users/#{@current_user.id}")
+      redirect_to user_url(@current_user)
     end
   end
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     )
     if @post.save
       flash[:notice] = "投稿しました"
-       redirect_to("/users/#{@current_user.id}")
+       redirect_to user_url(@current_user)
     else
        render("posts/new")
      end
