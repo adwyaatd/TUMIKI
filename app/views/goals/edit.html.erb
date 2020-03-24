@@ -9,10 +9,10 @@
     <div class="form-body">
         <%= form_with model: @goal do |f| %>
           <%= f.label :goal,"あなたの目標は何ですか？"%>
-          <%= f.text_field :goal,value:@goal.goal%>
+          <%= f.text_field :goal%>
 
           <%= f.label :purpose,"その目的は何でしょう？"%>
-          <%= f.text_field :purpose,value:@goal.purpose%>
+          <%= f.text_field :purpose%>
 
           <%= f.label :date,"いつまでに達成しますか？"%>
           <br>
