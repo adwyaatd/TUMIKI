@@ -21,7 +21,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
     if @post.save
       flash[:notice] = "投稿しました"
-      redirect_to("/users/#{@current_user.id}")
+      redirect_to user_url(@current_user)
     else
       @user = User.find_by(id: @current_user.id)
       render("/users/show")
@@ -78,7 +78,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
     if @user && @user.authenticate(params[:password])
       session[:user_id]=@user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/users/#{@user.id}")
+      redirect_to @user
     else
       @error_message = "メールアドレス又はパスワードが間違っています"
       @email = params[:email]

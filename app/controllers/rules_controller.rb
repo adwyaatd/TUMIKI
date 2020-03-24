@@ -35,7 +35,7 @@ class RulesController < ApplicationController
     @rule = Rule.find_by(id:params[:id])
     @rule.content = params[:content]
     if @rule.save
-      redirect_to user_url
+      redirect_to user_url(@current_user)
     else
       render template: "users/show"
     end
