@@ -24,18 +24,18 @@
       </div>
     <% end %>
 
-    <%= form_tag posts_create_users_path do %>
-      <div class="post-form">
+    <div class="post-form">
       <div class="post-form-body">
-        <% @post.errors.full_messages.each do |message| %>
         <div class="form-error">
-          <%= message %>
+          <% Post.new.errors.full_messages.each do |message| %>
+            <%= message %>
+          <% end %>
         </div>
-      <% end %>
-        <p>今日の積み上げ</p>   
-        <textarea name="content"></textarea>
-        <input type="submit" value="投稿">
+        <%= form_with url:posts_create_users_path do |f| %>
+          <%= f.label :content,"【今日の積み上げ】" %>
+          <%= f.text_area :content %>
+          <%= f.submit "投稿" %>
+        <% end %>
       </div>
-      </div>
-    <% end %>
+    </div>
   <% end %>

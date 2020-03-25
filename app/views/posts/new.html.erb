@@ -2,17 +2,17 @@
   <%= render 'layouts/menu' %>
   <div class="container">
     <h1 class="form-heading">今日の積み上げを投稿</h1>
-    <%= form_tag posts_path do %>
       <div class="form">
         <div class="form-body">
-          <% @post.errors.full_messages.each do |message| %>
             <div class="form-error">
-             <%= message %>
+              <% @post.errors.full_messages.each do |message| %>
+                <%= message %>
+              <% end %>
             </div>
-          <% end %>
-          <textarea name="content"><%= @post.content %></textarea>
-
-          <input type="submit" value="投稿">
+          <%= form_with model:@post do |f| %>
+          <%= f.text_area :content %>
+          <%= f.hidden_field :user_id,value:@current_user.id%>
+          <%= f.submit "投稿する"%>
         </div>
       </div>
     <% end %>
