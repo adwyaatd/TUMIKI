@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20191112112737) do
     t.string   "purpose"
     t.date     "date"
     t.integer  "user_id"
-    t.string   "users_name"
+    t.string   "user_name"
     t.string   "status",     limit: 45
   end
 

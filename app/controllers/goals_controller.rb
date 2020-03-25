@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user_id = @current_user.id
-    @goal.users_name = @current_user.name
+    @goal.user_name = @current_user.name
     if @goal.save
       flash[:notice] = "大目標設定完了です"
       redirect_to new_post_url
@@ -24,9 +24,6 @@ class GoalsController < ApplicationController
   
   def update
     @goal = Goal.find_by user_id:@current_user.id
-    #@goal.goal = params[:goal]
-    #@goal.purpose = params[:purpose]
-    #@goal.date = params[:date]
     if @goal.update(goal_params)
       flash[:notice] = "目標を更新しました！"
       redirect_to user_url(@current_user)
@@ -45,13 +42,13 @@ class GoalsController < ApplicationController
      purpose:params[:purpose],
      date:params[:date],
      user_id:@current_user.id,
-     users_name:@current_user.name
+     user_name:@current_user.name
     )
     if @goal.save
       flash[:notice] = "目標を再度作成・設定しました"
       redirect_to user_url(@current_user)
     else
-      render action: reset
+      render :reset
     end
   end
 
@@ -93,7 +90,7 @@ class GoalsController < ApplicationController
 
   private
   def goal_params
-    params.require(:goal).permit(:goal,:purpose,:date,:users_name,:user_id)
+    params.require(:goal).permit(:goal,:purpose,:date,:user_name,:user_id)
   end
 
 end

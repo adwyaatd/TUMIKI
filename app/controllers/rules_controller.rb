@@ -11,14 +11,12 @@ class RulesController < ApplicationController
   end
 
   def new
-    @rule = Rule.where(user_id:@current_user.id)
+    @rule = Rule.new
+    @rules = Rule.where(user_id:@current_user.id)
   end
 
   def create
-  	@rule = Rule.new(
-  	  content:params[:content],
-  	  user_id: @current_user.id
-  	)
+    @rule = Rule.new (rule_params)
   	if @rule.save
   		flash[:notice] = "設定しました"
       redirect_to new_rule_url(@rule.user_id)
@@ -46,5 +44,10 @@ class RulesController < ApplicationController
     @rule.destroy
     flash[:notice] = "マイルールを削除しました"
     redirect_to new_rule_url
+  end
+
+  private
+  def rule_params
+    params.require(:rule).permit(:content,:user_id)
   end
 end

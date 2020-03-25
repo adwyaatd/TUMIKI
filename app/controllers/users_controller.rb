@@ -18,13 +18,11 @@ before_action:ensure_current_user,{only:[:edit,:update]}
       content: params[:content],
       user_id: @current_user.id
     )
-
     if @post.save
       flash[:notice] = "投稿しました"
       redirect_to user_url(@current_user)
     else
-      @user = User.find_by(id: @current_user.id)
-      render("/users/show")
+      redirect_to @current_user
     end
   end
 
@@ -34,9 +32,6 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   def create
     @user = User.new(user_params)
-      # name: params[:name],
-      # email: params[:email],
-      # password: params[:password],
     @user.image_name ="default_user.JPG"
     if @user.save
      session[:user_id] = @user.id
@@ -83,7 +78,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
       @error_message = "メールアドレス又はパスワードが間違っています"
       @email = params[:email]
       @password = params[:password]
-      render("users/login_form")
+      render :login_form
     end
   end
 
