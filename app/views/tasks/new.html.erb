@@ -3,15 +3,17 @@
 
 <div class = "container">
   <h1 class = "form-heading">タスク管理</h1>
-  <%= form_tag tasks_path,method: :post do%>
     <div class ="form">
       <div class ="form-body">
-        <p>タスクを追加</p>
-        <input name="content" value="<%= @task.content %>">
-        <input type="submit" value="追加">
+        <%= form_with model:@task do |f| %>
+          <%= f.label :content,"【タスクを追加する】" %>
+          <%= f.text_field :content %>
+          <%= f.hidden_field :user_id,value:@current_user.id %>
+          <%= f.hidden_field :user_name,value:@current_user.name %>
+          <%= f.submit "追加" %>
+        <% end %>
       </div>
     </div>
-  <% end %>
 
   <% @user.tasks.each do |task|%>
     <div class="user-posts-box">

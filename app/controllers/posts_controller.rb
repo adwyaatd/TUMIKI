@@ -26,15 +26,12 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post =Post.new(
-      content: params[:content],
-      user_id: @current_user.id
-    )
+    @post =Post.new(post_params)
     if @post.save
       flash[:notice] = "投稿しました"
-       redirect_to user_url(@current_user)
+      redirect_to user_url(@current_user)
     else
-       render("posts/new")
+      render :new
      end
   end
 
@@ -44,7 +41,7 @@ class PostsController < ApplicationController
 
   def update
    @post = Post.find_by(id: params[:id])
-   @post.content = params[:content]
+   @post.update(post_params)
    if @post.save
      flash[:notice] = "投稿を編集しました"
      redirect_to @post
@@ -58,5 +55,10 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to user_url @current_user.id
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:content,:user_id)
   end
 end

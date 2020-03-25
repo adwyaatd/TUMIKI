@@ -11,26 +11,15 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     end
   end
 
-  # def index
-  # 	@user = User.find_by(id: params[:id])
-  #   @goal = Goal.find_by(user_id: @current_user.id)
-  #   @post = Post.new
-  # end
-
   def new
   	@task = Task.new
   	@user = User.find_by(id: @current_user.id)
   end
 
   def create
-  	@user = User.find_by(id:@current_user.id)
-  	@task = Task.new(
-  	  content:params[:content],
-  	  user_id:@current_user.id,
-  	  user_name:@user.name
-  	)
+  	@task = Task.new task_params
   	if @task.save
-  	 redirect_to tasks_user_url(id: @user.id)
+  	 redirect_to tasks_user_url(id: @current_user.id)
     else
      render action: :new
     end
@@ -42,12 +31,12 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
 
   def update
     @task=Task.find_by(id:params[:id])
-    @task.content= params[:content]
+    @task.update(task_params)
     if @task.save
       flash[:notice]="タスクを編集しました"
       redirect_to tasks_user_url(id: @task.user_id)
     else
-      render action: :edit
+      render :edit
     end
   end
 
@@ -77,5 +66,10 @@ before_action:forbid_edit_tasks,{only:[:edit,:update,:done,:unfinish,:destroy]}
     @task = Task.find_by(id: params[:id])
     @task.destroy
     redirect_to tasks_user_url(id: @task.user_id)
+  end
+
+  private
+  def task_params
+    params.require(:task).permit(:content,:user_id,:user_name)
   end
 end
