@@ -25,7 +25,7 @@ RSpec.feature "Posts", type: :feature do
         purpose:"testpurpose",
         date:"1111-11-11",
         user_id:1,
-        users_name:"鈴木一郎",
+        user_name:"鈴木一郎",
       )
 
       #お試し投稿を作成

@@ -6,35 +6,35 @@
     <div class="form-heading">マイルールの設定・更新</div>
 
     <%# if @rule.user_id == @current_user.id %>
-      <%= form_tag rules_path do %>
         <div class="form">
           <div class="form-body">
-            <% rule = Rule.new %>
-              <% rule.errors.full_messages.each do |message| %>
+              <% @rule.errors.full_messages.each do |message| %>
                 <div class="form-error">
                   <%= message %>
                 </div>
+              <% end %>
+            <%= form_with model:@rule do |f| %>
+              <%= f.label :content,"【ルール内容】" %>
+              <%= f.text_field :content %>
+              <%= f.hidden_field :user_id,value: @current_user.id %>
+              <%= f.submit "設定する"%>
             <% end %>
-              <p>【ルール内容】</p>
-                <input name="content">
-                <input type="submit" value="設定">
           </div>
         </div>
-      <% end %>
     <%# end %>        
 
    <div class="form">
     <div class="form-body">
       <p>【マイルール一覧】</p>    
-      <% @rule.each do |rule| %>
+      <% @rules.each do |rule| %>
         <div class="rule-index">
           <%= link_to rule.content,edit_rule_path(rule) %>
         </div>
         <%# if @rule.user_id == @current_user.id %>
-          <div class="rules-menus">
-            <%= link_to "編集",edit_rule_path(rule) %>
-            <%= link_to "削除",rule_path(rule),method: :delete %>
-          </div>
+        <div class="rules-menus">
+          <%= link_to "編集",edit_rule_path(rule) %>
+          <%= link_to "削除",rule_path(rule),method: :delete %>
+        </div>
         <%# end %>
       <% end %>
    </div>
