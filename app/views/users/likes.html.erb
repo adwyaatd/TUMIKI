@@ -11,10 +11,14 @@
     </ul>
 
     <% @like.each do |like|%>
-      <% post=Post.find_by(id:like.post_id)%>
+      <% post =Post.find_by(id:like.post_id)%>
       <div class="posts-index-item">
         <div class="post-left">
-          <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <% if post.user.image.attached? %>
+            <%= image_tag post.user.image %>
+          <% else %>
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          <% end %>
         </div>
         <div class="post-right">
           <div class="post-user-name">

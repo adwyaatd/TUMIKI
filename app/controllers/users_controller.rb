@@ -5,7 +5,7 @@ before_action:forbid_login_user,{only:[:new,:create,:login,:login_form]}
 before_action:ensure_current_user,{only:[:edit,:update]}
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :desc)
   end
 
   def show
@@ -90,7 +90,7 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   def likes
     @post = Post.find_by(id:params[:id])
     @user=User.find_by(id:params[:id])
-    @like=Like.where(user_id:@user.id)
+    @like=Like.where(user_id:@user.id).order(created_at: :desc)
   end
 
   def goals
