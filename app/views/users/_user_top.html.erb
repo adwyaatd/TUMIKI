@@ -2,9 +2,13 @@
     <div class="goal-wrapper">
       <% goal = Goal.where(user_id: @current_user.id).last %>
       <% if goal.status == nil%>
-        <p>【目標】<%= goal.goal %></p>
-        <p>【目的】<%= goal.purpose %></p>
-        <p>【達成期日】<%= goal.date.strftime("%Y年%-m月%-d日") %></p>
+        <div class="goal-box">
+          <p>【目標】</p>
+          <p><%= goal.goal %></p>
+          <p>【目的】</p>
+          <p><%= goal.purpose %></p>
+          <p>【達成期日】<%= goal.date.strftime("%Y年%-m月%-d日") %></p>
+        </div>
         <div class="achieve-btn">
           <%= link_to "目標達成",done_goal_path(goal),method: :post %>
         </div>
@@ -18,10 +22,12 @@
     <% if rule = Rule.where(user_id:@current_user.id) %>
       <div class="rule-wrapper">
         <p>【マイルール】</p>
-        <% rule.each do |rule| %>       
-        <p><%= link_to rule.content, edit_rule_path(rule) %></p>
-        <% end %>
       </div>
+      <% rule.each do |rule| %>       
+        <div class="rule-box">
+          <p><%= link_to rule.content, edit_rule_path(rule) %></p>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="post-form">

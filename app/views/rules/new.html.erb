@@ -23,21 +23,21 @@
         </div>
     <%# end %>        
 
-   <div class="form">
+  <div class="form">
     <div class="form-body">
       <p>【マイルール一覧】</p>    
       <% @rules.each do |rule| %>
-        <div class="rule-index">
-          <%= link_to rule.content,edit_rule_path(rule) %>
-        </div>
-        <%# if @rule.user_id == @current_user.id %>
-        <div class="rules-menus">
-          <%= link_to "編集",edit_rule_path(rule) %>
-          <%= link_to "削除",rule_path(rule),method: :delete %>
+        <div class="border-gray">
+            <%= link_to rule.content,edit_rule_path(rule) %>
+          <%# if @rule.user_id == @current_user.id %>
+          <div class="rules-menus">
+            <%= link_to "編集",edit_rule_path(rule) %>
+            <%= link_to "削除",rule_path(rule),method: :delete %>
+          </div>
         </div>
         <%# end %>
       <% end %>
-   </div>
+    </div>
   </div>
 
 </div>
