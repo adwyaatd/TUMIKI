@@ -1,4 +1,22 @@
+.border-gray {
+  border: solid 0.1px gray;
+}
+
+.border-gray a {
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+
 .rules-menus {
-  float: right;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.rules-menus a {
+  color: gray;
 }
 /*# sourceMappingURL=rules.css.map */

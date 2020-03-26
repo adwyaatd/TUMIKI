@@ -5,28 +5,32 @@
 }
 
 .tasks-index, .done-tasks-index {
-  width: 100%;
+  width: 50%;
 }
 
 .tasks-title {
-  background-color: #e2ffe1;
+  background-image: url(/grain8.jpg);
+  background-size: cover;
   text-align: center;
   -webkit-box-shadow: 0 2px 6px #c1ced7;
           box-shadow: 0 2px 6px #c1ced7;
+  border-radius: 3px;
 }
 
-.done-tasks-title {
-  background-color: #e2ffe1;
-  text-align: center;
-  -webkit-box-shadow: 0 2px 6px #c1ced7;
-          box-shadow: 0 2px 6px #c1ced7;
+.tasks-title p {
+  color: white;
+  -webkit-box-shadow: 10px 2px 5px #C1CED8;
+          box-shadow: 10px 2px 5px #C1CED8;
 }
 
 .task-box, .done-task-box {
-  padding: 10px 30px;
-  background-color: white;
-  -webkit-box-shadow: 0 2px 6px #c1ced7;
-          box-shadow: 0 2px 6px #c1ced7;
+  padding: 10px 10px;
+  background-image: url(/grain6.jpeg);
+  background-size: cover;
+  -webkit-box-shadow: 10px 2px 5px #C1CED8;
+          box-shadow: 10px 2px 5px #C1CED8;
+  border-radius: 3px;
+  border: solid 0.5px #b7b7b7;
 }
 
 .task-content {
@@ -34,12 +38,21 @@
   text-align: left;
 }
 
-.foot-wrapper {
+.task-content a {
+  word-break: break-all;
+}
+
+.task-foot {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.task-foot a {
+  color: gray;
+  padding-right: 6px;
 }
 /*# sourceMappingURL=tasks.css.map */
