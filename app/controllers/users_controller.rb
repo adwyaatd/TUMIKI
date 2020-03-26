@@ -52,10 +52,9 @@ before_action:ensure_current_user,{only:[:edit,:update]}
   def update
     @user = User.find_by(id: params[:id])
     @user.update(user_params)
-    if params[:image_name]
+    if params[:image]
       @user.image_name= "#{@user.id}.JPG"
-      image = params[:image_name]
-      File.binwrite("/Users/hosodaraimu/TUMIKI_app//public/user_images/#{@user.image_name}",image.read)
+      image = params[:image]
     end
     if @user.save
       flash[:notice] = "ユーザー情報を編集しました"
@@ -106,6 +105,6 @@ before_action:ensure_current_user,{only:[:edit,:update]}
 
   private
   def user_params
-    params.require(:user).permit(:name,:email,:password)
+    params.require(:user).permit(:name,:email,:password,:image)
   end
 end
