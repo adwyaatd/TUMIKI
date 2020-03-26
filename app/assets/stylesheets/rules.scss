@@ -1,3 +1,14 @@
+.border-gray{
+  border: solid 0.1px gray;
+  a{
+    padding-left: 1rem;
+    padding-right: 0.5rem;
+  }
+}
 .rules-menus{
-    float: right;
+  display: flex;
+  justify-content: flex-end;
+  a{
+    color: gray;
+  }
 }

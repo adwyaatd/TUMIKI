@@ -2,6 +2,11 @@
   <div class="container">
     <div class="form-heading">目標を設定しましょう</div>
     <div class="set-goal-form">
+      <% if @error_message %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+      <% end %>
       <%= form_with model:@goal,local: true do |f|%>
         <%= f.label :goal,"あなたの目標は何ですか？" %>
         <%= f.text_field :goal %>
