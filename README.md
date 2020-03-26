@@ -26,12 +26,13 @@ URL:https://keyaki-h2.herokuapp.com/
 
 # 使用技術
 * Ruby：2.6.3
-* Ruby on Rails：5.2.4.1
+* Ruby on Rails：5.2.4.2
 
 * AWS
     * Route53
     * VPC
     * EC2
+    * S3
     * CloudWatch    
 * CircleCI
 
@@ -57,7 +58,7 @@ URL:https://keyaki-h2.herokuapp.com/
     * 新規登録
     * ログイン・ログアウト
     * プロフィール編集
-    * アイコン画像登録
+    * アイコン画像登録(S3へ保存)
     * ユーザー一覧表示
     * 他ユーザーのホーム画面（目標や投稿内容）の確認
     
