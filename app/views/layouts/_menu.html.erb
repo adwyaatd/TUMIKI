@@ -1,9 +1,12 @@
 <div  class="menu">
       <ul class="user">
-        <% if @current_user %>
         <li>
-        <img src="<%="/user_images/#{@current_user.image_name}"%>">
-        <br><%= link_to @current_user.name,edit_user_path(@current_user)%>
+          <% if @current_user.image.attached? %>
+            <%= image_tag @current_user.image %>
+          <% else %>
+            <img src="<%="/user_images/#{@current_user.image_name}"%>">
+          <% end %>
+            <br><%= link_to @current_user.name,edit_user_path(@current_user)%>
         </li>
         <li>
           <%= link_to "ホームへ戻る",user_path(@current_user) %>
@@ -23,6 +26,5 @@
         <li>
           <%= link_to "マイルール設定",new_rule_path %>
         </li> 
-        <% end %>
     　</ul>
     </div>
