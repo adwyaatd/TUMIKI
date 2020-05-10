@@ -34,6 +34,7 @@ URL:https://keyaki-h2.herokuapp.com/
     * EC2
     * S3
     * CloudWatch    
+* Docker
 * CircleCI
 
 * Unicorn
@@ -49,9 +50,6 @@ URL:https://keyaki-h2.herokuapp.com/
 * RSpec
 * Capybara
 * Selenium  
-
-【追加予定】  
-* Docker
 
 # 機能一覧
 * ユーザー機能
