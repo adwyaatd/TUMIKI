@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2020_03_26_014448) do
     t.date "date"
     t.integer "user_id"
     t.string "user_name"
-    t.string "status", limit: 45
   end
 
   create_table "likes", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
