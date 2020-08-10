@@ -8,10 +8,10 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-  username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
-  host: db
+  # timeout: 5000
+  username: <%= Rails.application.credentials.MYSQL_USER %>
+  password: <%= Rails.application.credentials.MYSQL_PASSWORD %>
+  host: localhost
 
 development:
   <<: *default
