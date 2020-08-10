@@ -277,7 +277,7 @@ DEPENDENCIES
   pry-doc
   pry-rails
   pry-stack_explorer
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.2)
   rails-i18n
   rspec-rails
